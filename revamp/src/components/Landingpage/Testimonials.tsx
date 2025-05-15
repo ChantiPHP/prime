@@ -84,7 +84,8 @@ export default function Testimonials() {
           {/* Left Arrow */}
           <button
             onClick={handlePrev}
-            className="absolute -left-8 top-1/2 -translate-y-1/2 w-9 h-9 bg-PRIMEwhite border border-PRIMElightgray rounded-full flex justify-center items-center shadow-lg hover:bg-PRIMEblue hover:text-white transition"
+            className="absolute -left-8 top-1/2 -translate-y-1/2 w-9 h-9 bg-PRIMEwhite border border-PRIMElightgray rounded-full 
+            flex justify-center items-center shadow-lg hover:bg-PRIMEblue hover:text-white active:bg-PRIMEgray active:text-PRIMEwhite transition"
             aria-label="Previous testimonial"
           >
             <FaChevronLeft />
@@ -120,7 +121,8 @@ export default function Testimonials() {
           {/* Right Arrow */}
           <button
             onClick={handleNext}
-            className="absolute -right-8 top-1/2 -translate-y-1/2 w-9 h-9 bg-white border border-gray-300 rounded-full flex justify-center items-center shadow-lg hover:bg-PRIMEblue hover:text-white transition"
+            className="absolute -right-8 top-1/2 -translate-y-1/2 w-9 h-9 bg-white border border-gray-300 rounded-full 
+            flex justify-center items-center shadow-lg hover:bg-PRIMEblue hover:text-white active:bg-PRIMEgray active:text-PRIMEwhite transition"
             aria-label="Next testimonial"
           >
             <FaChevronRight />

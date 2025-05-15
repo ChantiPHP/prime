@@ -4,16 +4,6 @@ import { FaHandshake, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const partners = [
   {
-    name: "Prime Philippines",
-    logo: "/Logo/prime-logo.webp",
-    description: "Leading supplier of property materials and services.",
-  },
-  {
-    name: "Greatwork",
-    logo: "/Logo/greatwork.webp",
-    description: "Innovative partner in real estate project execution.",
-  },
-  {
     name: "CREBA",
     logo: "/Logo/CREBA.webp",
     description: "Committed to professional excellence in construction.",
@@ -29,7 +19,6 @@ const partners = [
     description: "Strengthening client relationships and business growth.",
   },
 ];
-
 
 
 export default function TrustedPartners() {
@@ -119,7 +108,8 @@ export default function TrustedPartners() {
           {/* Navigation Arrows */}
           <button
             onClick={handlePrev}
-            className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-PRIMEwhite shadow-md flex items-center justify-center text-[var(--color-PRIMEblue)] hover:bg-[var(--color-PRIMEblue)] hover:text-white transition-all"
+            className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-PRIMEwhite shadow-lg border border-PRIMEgray 
+            flex items-center justify-center text-[var(--color-PRIMEblue)] hover:bg-[var(--color-PRIMEblue)] hover:text-white active:bg-PRIMEgray active:text-PRIMEwhite transition-all"
             aria-label="Previous partner"
           >
             <FaChevronLeft className="text-md md:text-lg" />
@@ -127,7 +117,8 @@ export default function TrustedPartners() {
 
           <button
             onClick={handleNext}
-            className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-PRIMEwhite shadow-md flex items-center justify-center text-[var(--color-PRIMEblue)] hover:bg-[var(--color-PRIMEblue)] hover:text-white transition-all"
+            className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-PRIMEwhite shadow-lg border border-PRIMEgray  
+            flex items-center justify-center text-[var(--color-PRIMEblue)] hover:bg-[var(--color-PRIMEblue)] hover:text-white active:bg-PRIMEgray active:text-PRIMEwhite transition-all"
             aria-label="Next partner"
           >
             <FaChevronRight className="text-md md:text-lg" />
@@ -141,7 +132,7 @@ export default function TrustedPartners() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 50 }}
               transition={{ duration: 0.5 }}
-              className="absolute left-4 sm:left-0 md:-left-8 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center cursor-pointer"
+              className="absolute left-4 sm:left-0 md:-left-8 w-30 h-30 md:w-42 md:h-42 flex items-center justify-center cursor-pointer"
               onClick={handlePrev}
             >
               <img
@@ -154,29 +145,29 @@ export default function TrustedPartners() {
               />
             </motion.div>
 
-<motion.div
-  key={current}
-  initial={{ opacity: 0, x: 50 }}
-  animate={{ opacity: 1, x: 0 }}
-  exit={{ opacity: 0, x: -50 }}
-  transition={{ duration: 0.5 }}
-  className="z-10 w-[250px] h-[320px] md:w-[300px] md:h-[360px] flex flex-col items-center justify-start text-center px-4 pt-4"
->
-  <div className="w-36 h-36 md:w-44 md:h-44 flex items-center justify-center mb-4">
-    <img
-      src={partners[current].logo}
-      alt={partners[current].name}
-      className="max-w-[90%] max-h-[90%] object-contain transition-transform duration-300 hover:scale-105"
-    />
-  </div>
-  <h3 className="text-lg md:text-xl font-semibold text-PRIMEblue mb-1">
-    {partners[current].name}
-  </h3>
-  <p className="text-sm md:text-base text-PRIMEblack leading-snug">
-    {partners[current].description || "Trusted partner in the industry."}
-  </p>
-</motion.div>
-
+            {/* Center Partner */}
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.5 }}
+              className="z-10 w-[250px] h-[320px] md:w-[300px] md:h-[360px] flex flex-col items-center justify-start text-center px-4 pt-4"
+            >
+              <div className="w-36 h-36 md:w-48 md:h-48 flex items-center justify-center mb-4">
+                <img
+                  src={partners[current].logo}
+                  alt={partners[current].name}
+                  className="max-w-[90%] max-h-[90%] object-contain transition-transform duration-300 hover:scale-105"
+                />
+              </div>
+              <h3 className="text-lg md:text-xl font-semibold text-PRIMEblue mb-1">
+                {partners[current].name}
+              </h3>
+              <p className="text-sm md:text-base text-PRIMEblack leading-snug">
+                {partners[current].description || "Trusted partner in the industry."}
+              </p>
+            </motion.div>
 
             {/* Right Partner */}
             <motion.div
@@ -184,7 +175,7 @@ export default function TrustedPartners() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.5 }}
-              className="absolute right-4 sm:right-0 md:-right-8 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center cursor-pointer"
+              className="absolute right-4 sm:right-0 md:-right-8 w-30 h-30 md:w-42 md:h-42 flex items-center justify-center cursor-pointer"
               onClick={handleNext}
             >
               <img

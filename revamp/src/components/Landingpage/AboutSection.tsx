@@ -47,7 +47,7 @@ export default function AboutSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="bg-PRIMElight py-20 px-6 sm:px-10 md:px-16 font-gotham-book">
+    <section className="w-full py-20 px-6 sm:px-10 md:px-16 font-gotham-book">
       <div className="max-w-[1400px] mx-auto space-y-20">
         {/* Label */}
         <motion.div
@@ -69,10 +69,7 @@ export default function AboutSection() {
         >
           <h2 className="text-[32px] font-gotham-bold text-PRIMEblack max-w-3xl mx-auto leading-tight">
             Why Choose{" "}
-            <a
-              href="#"
-              className="text-PRIMEblue underline-offset-2 hover:underline transition"
-            >
+            <a href="#" className="text-PRIMEblue underline-offset-2 hover:underline transition">
               PRIME Philippines
             </a>{" "}
             for Your Commercial Real Estate Needs?

@@ -14,13 +14,13 @@ export function Button({
   ...props
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center rounded-md font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-PRIMEblue focus-visible:ring-offset-2";
+    "inline-flex items-center justify-center rounded-full font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-PRIMEblue focus-visible:ring-offset-2";
 
   const variants = {
     default:
       "bg-PRIMEblue text-PRIMEwhite hover:bg-[#002855] active:bg-[#002855]",
     ghost:
-      "bg-transparent text-PRIMEblue border border-PRIMElightgray hover:bg-blue-50 active:bg-gray-100",
+      "bg-transparent text-PRIMEblue border border-PRIMElightgray hover:bg-PRIMEblue hover:text-PRIMEwhite active:bg-PRIMEgray active:text-PRIMEwhite",
   };
 
   const sizes = {

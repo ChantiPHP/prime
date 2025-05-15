@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import heroImage from "@/assets/PrimeBG.jpg";
+import heroImage from "@/assets/cebu.jpg";
 
 const Hero: React.FC = () => {
   const [sales, setSales] = useState(0);
@@ -51,13 +51,15 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative h-screen min-h-[600px] text-white">
+
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroImage})` }}
       />
 
- <div className="absolute inset-0 bg-PRIMEblack/30 transition duration-300"></div>
+                {/* Overlay */}
+          <div className="absolute inset-0 bg-PRIMEblue/20 transition duration-300"></div>
 
       {/* Content Wrapper */}
       <div className="relative z-10 container mx-auto h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 text-center md:items-start md:justify-center md:text-left">
@@ -71,8 +73,8 @@ const Hero: React.FC = () => {
                   : "-translate-x-10 opacity-0"
               }`}
             >
-              <span className="text-PRIMEblue">PRIME</span> Philippines
-            </span>
+   <span className="bg-[linear-gradient(to_right,_theme(colors.PRIMEblue)_0%,_theme(colors.PRIMEblue)_50%,_theme(colors.PRIMEred)_75%,_theme(colors.PRIMEyellow)_100%)] text-transparent bg-clip-text">
+    PRIME</span>{' '} Philippines </span>
           </h1>
 
           {/* Tagline */}
