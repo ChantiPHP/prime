@@ -86,8 +86,10 @@ export default function TrustedPartners() {
   return (
     <section
       ref={sectionRef}
-      className="w-full py-6 md:py-12 relative overflow-hidden"
+      className="w-full  bg-[url('/Services.png')] bg-cover bg-center py-6 md:py-12 relative overflow-hidden"
     >
+       {/* Overlay */}
+          <div className="absolute inset-0 bg-PRIMEwhite/50 transition duration-300"></div>
       <div className="w-full max-w-[1400px] mx-auto flex flex-col items-center px-4 md:px-8 relative z-10">
         {/* Heading */}
         <motion.div
@@ -104,7 +106,7 @@ export default function TrustedPartners() {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: inView ? 1 : 0, y: inView ? 0 : -20 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-[20pt] md:text-4xl text-[var(--color-dark-gray)] font-bold text-center tracking-tight"
+          className="text-[20pt] md:text-4xl text-PRIMEblack font-bold text-center tracking-tight"
         >
           Our Partner Organizations
         </motion.h2>
@@ -167,10 +169,10 @@ export default function TrustedPartners() {
       className="max-w-[90%] max-h-[90%] object-contain transition-transform duration-300 hover:scale-105"
     />
   </div>
-  <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-1">
+  <h3 className="text-lg md:text-xl font-semibold text-PRIMEblue mb-1">
     {partners[current].name}
   </h3>
-  <p className="text-sm md:text-base text-gray-600 leading-snug">
+  <p className="text-sm md:text-base text-PRIMEblack leading-snug">
     {partners[current].description || "Trusted partner in the industry."}
   </p>
 </motion.div>
