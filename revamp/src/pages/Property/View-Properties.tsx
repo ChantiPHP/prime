@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom"; // Import useParams for dynamic routing
+import { useParams } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
-
+import axios from "axios";
 import {
   MapPin,
   Share,
@@ -14,35 +14,82 @@ import {
   Heart,
   HouseIcon,
 } from "lucide-react";
-
-import { properties, Property } from "@/data/propertyData"; // Import the properties data
+import { properties, Property } from "@/data/propertyData";
 
 export default function ViewProperties() {
-  const { id } = useParams<{ id: string }>(); // Get the property ID from the URL
-  const property = properties.find((prop) => prop.id === parseInt(id || "", 10)) as Property;
+  const { id } = useParams<{ id: string }>();
+  const property = properties.find(
+    (prop) => prop.id === parseInt(id || "", 10)
+  ) as Property | undefined;
 
   const [currentImage, setCurrentImage] = useState(0);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
 
-    // Scroll to the top of the page when the component is rendered
+  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
+  // Auto image slider
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (property) {
+        setCurrentImage((prev) => (prev + 1) % property.png.length);
+      }
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [property]);
+
   const handleNext = () => {
-    setCurrentImage((prev) => (prev + 1) % property.png.length);
+    if (property) {
+      setCurrentImage((prev) => (prev + 1) % property.png.length);
+    }
   };
 
   const handlePrev = () => {
-    setCurrentImage((prev) => (prev - 1 + property.png.length) % property.png.length);
+    if (property) {
+      setCurrentImage((prev) => (prev - 1 + property.png.length) % property.png.length);
+    }
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const { name, phone, email, message } = formData;
+    if (!name || !phone || !email || !message) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    try {
+      const res = await axios.post("http://localhost:8000/api/contact", formData);
+      if (res.status === 200 || res.status === 201) {
+        alert("Message sent successfully!");
+        setFormData({ name: "", phone: "", email: "", message: "" });
+      } else {
+        alert("Something went wrong.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Failed to send message.");
+    }
+  };
 
   if (!property) {
     return (
@@ -72,7 +119,7 @@ export default function ViewProperties() {
               {property.leaseType}
             </span>
             <div className="flex items-center gap-2">
-              <button className="text-PRIMEgray hover:text-PRIMEblack transition-colors" aria-label="Share property">
+              <button className="text-PRIMEgray hover:text-PRIMEblack" aria-label="Share property">
                 <Share size={18} />
               </button>
               <button
@@ -93,21 +140,22 @@ export default function ViewProperties() {
         <main className="flex flex-col lg:flex-row gap-8">
           {/* Left Section */}
           <section className="flex-1">
+            {/* Image Viewer */}
             <div className="relative group">
               <img
                 src={property.png[currentImage]}
                 alt={`Property view ${currentImage + 1}`}
-                className="w-full md:h-[500px] object-cover rounded-xl border shadow-lg transition-all"
+                className="w-full md:h-[500px] object-cover rounded-xl border shadow-lg"
               />
               <button
                 onClick={handlePrev}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-white/80 backdrop-blur-sm border shadow hover:bg-white transition-opacity opacity-0 group-hover:opacity-100"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-white/80 rounded-full backdrop-blur-sm border shadow hover:bg-white opacity-0 group-hover:opacity-100"
               >
                 <ChevronLeft size={20} />
               </button>
               <button
                 onClick={handleNext}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-white/80 backdrop-blur-sm border shadow hover:bg-white transition-opacity opacity-0 group-hover:opacity-100"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-white/80 rounded-full backdrop-blur-sm border shadow hover:bg-white opacity-0 group-hover:opacity-100"
               >
                 <ChevronRight size={20} />
               </button>
@@ -116,11 +164,9 @@ export default function ViewProperties() {
               </div>
             </div>
 
+            {/* Thumbnails */}
             <div className="flex items-center gap-3 mt-4">
-              <button
-                onClick={handlePrev}
-                className="p-2 rounded-full bg-white border shadow hover:bg-gray-100 sm:block hidden"
-              >
+              <button onClick={handlePrev} className="p-2 rounded-full bg-white border shadow hover:bg-gray-100 sm:block hidden">
                 <ChevronLeft size={18} />
               </button>
               <div className="flex gap-3 overflow-x-auto py-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
@@ -142,14 +188,12 @@ export default function ViewProperties() {
                   </button>
                 ))}
               </div>
-              <button
-                onClick={handleNext}
-                className="p-2 rounded-full bg-white border shadow hover:bg-gray-100 sm:block hidden"
-              >
+              <button onClick={handleNext} className="p-2 rounded-full bg-white border shadow hover:bg-gray-100 sm:block hidden">
                 <ChevronRight size={18} />
               </button>
             </div>
 
+            {/* Description & Map */}
             <div className="mt-8 space-y-6">
               <div>
                 <h2 className="text-subtitle text-PRIMEblue gotham-bold mb-3">Description</h2>
@@ -157,15 +201,12 @@ export default function ViewProperties() {
                   This stunning property is located in {property.location} and is perfect for your business needs.
                 </p>
               </div>
-
-              <div className="mt-8">
+              <div>
                 <h3 className="text-subtitle text-PRIMEblue gotham-bold mb-3">Location</h3>
                 <div className="rounded-lg border overflow-hidden shadow-lg">
                   <iframe
                     className="w-full h-64 md:h-80"
-                    src={`https://maps.google.com/maps?q=${encodeURIComponent(
-                      property.location
-                    )}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                    src={`https://maps.google.com/maps?q=${encodeURIComponent(property.location)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
                     loading="lazy"
                     allowFullScreen
                     title="Property location map"
@@ -179,58 +220,31 @@ export default function ViewProperties() {
             </div>
           </section>
 
-          {/* Right Section - Contact Form */}
+          {/* Contact Form */}
           <section className="w-full lg:w-[500px] bg-PRIMEwhite border border-PRIMElightgray rounded-xl p-6 self-start shadow-xl">
             <h3 className="text-maintitle text-PRIMEblue mb-4 gotham-bold">Contact Us</h3>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-subcontent text-PRIMEgray mb-1 gotham-bold">
-                  Full Name
-                </label>
-                <Input
-                  id="name"
-                  placeholder="Your name"
-                  className="w-full border border-PRIMElightgray rounded-lg px-4 py-2 text-subcontent focus:outline-none focus:ring-2 focus:ring-PRIMEblue"
-                />
+                <label htmlFor="name" className="block text-subcontent text-PRIMEgray mb-1 gotham-bold">Full Name</label>
+                <Input id="name" value={formData.name} onChange={handleChange} placeholder="Your name" />
               </div>
+
               <div>
-                <label htmlFor="phone" className="block text-subcontent text-PRIMEgray mb-1 gotham-bold">
-                  Phone Number
-                </label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  placeholder="Your phone number"
-                  className="w-full border border-PRIMElightgray rounded-lg px-4 py-2 text-subcontent focus:outline-none focus:ring-2 focus:ring-PRIMEblue"
-                />
+                <label htmlFor="phone" className="block text-subcontent text-PRIMEgray mb-1 gotham-bold">Phone Number</label>
+                <Input id="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="Your phone number" />
               </div>
+
               <div>
-                <label htmlFor="email" className="block text-subcontent text-PRIMEgray mb-1 gotham-bold">
-                  Email Address
-                </label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="you@example.com"
-                  className="w-full border border-PRIMElightgray rounded-lg px-4 py-2 text-subcontent focus:outline-none focus:ring-2 focus:ring-PRIMEblue"
-                />
+                <label htmlFor="email" className="block text-subcontent text-PRIMEgray mb-1 gotham-bold">Email Address</label>
+                <Input id="email" type="email" value={formData.email} onChange={handleChange} placeholder="Your email" />
               </div>
+
               <div>
-                <label htmlFor="message" className="block text-subcontent text-PRIMEgray mb-1 gotham-bold">
-                  Message
-                </label>
-                <Textarea
-                  id="message"
-                  placeholder="Your message..."
-                  className="w-full border border-PRIMElightgray rounded-lg px-4 py-2 text-subcontent focus:outline-none focus:ring-2 focus:ring-PRIMEblue"
-                />
+                <label htmlFor="message" className="block text-subcontent text-PRIMEgray mb-1 gotham-bold">Message</label>
+                <Textarea id="message" value={formData.message} onChange={handleChange} placeholder="Your message" rows={4} />
               </div>
-              <Button
-                type="submit"
-                className="w-full bg-PRIMEblue hover:bg-[#002855] rounded-lg py-2 text-subcontent gotham-bold text-PRIMEwhite"
-              >
-                Submit
-              </Button>
+
+              <Button type="submit" className="w-full">Send Message</Button>
             </form>
           </section>
         </main>
