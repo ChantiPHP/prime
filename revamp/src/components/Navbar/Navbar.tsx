@@ -68,24 +68,31 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300 font-[Gotham Book] ${navClasses}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 font-[Gotham Book] ${navClasses}`}
     >
-      <div className="w-full flex justify-between items-center px-4 md:px-6">
-        {/* Logo */}
-        <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-          <Link to="/" onClick={scrollToTop}>
-            <img
-              src="/Logo/prime-logo.webp"
-              alt="PRIME Philippines Logo"
-              className="h-12 md:h-16 p-1 object-contain"
-            />
-          </Link>
-        </motion.div>
+      <div className="w-full flex justify-between items-center">
+        {/* Left Logo with white background flush left */}
+        <div className="relative">
+          <div className="absolute left-0 top-0 h-full w-full bg-white z-[-1]" />
+          <motion.div
+            className="relative p-2 pr-4"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <Link to="/" onClick={scrollToTop}>
+              <img
+                src="/Logo/prime-logo.webp"
+                alt="PRIME Philippines Logo"
+                className="h-12 md:h-16 object-contain"
+              />
+            </Link>
+          </motion.div>
+        </div>
 
         {/* Desktop Navigation Links */}
         {!isTabletOrMobile && (
           <div
-            className="hidden lg:flex items-center space-x-6 text-[20px]"
+            className="hidden lg:flex items-center space-x-6 text-[20px] mr-6"
             ref={dropdownRef}
           >
             <NavLinks
