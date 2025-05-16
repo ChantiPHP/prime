@@ -74,23 +74,37 @@ const Hero: React.FC = () => {
   }}
 />
 
-
-
       {/* Content Wrapper */}
       <div className="relative z-10 container mx-auto h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 text-center md:items-start md:justify-center md:text-left">
         <div className="w-full max-w-[800px]">
           {/* Title */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[50pt] font-bold overflow-hidden leading-tight">
-            <span
-              className={`inline-block transition-all duration-500 ease-out ${
-                animate
-                  ? "translate-x-0 opacity-100"
-                  : "-translate-x-10 opacity-0"
-              }`}
-            >
-          <span className="bg-[linear-gradient(to_right,_theme(colors.PRIMEblue)_0%,_theme(colors.PRIMEblue)_50%,_theme(colors.PRIMEred)_75%,_theme(colors.PRIMEyellow)_100%)] 
-          text-transparent bg-clip-text"> PRIME</span>{' '} <span className="text-PRIMEwhite">Philippines </span></span>
-          </h1>
+         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[50pt] font-bold overflow-hidden leading-tight">
+  <span
+    className={`inline-block transition-all duration-500 ease-out ${
+      animate ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
+    }`}
+  >
+    {/* Stroked text layer */}
+    <span
+      className="absolute inset-0"
+      style={{
+        WebkitTextStroke: "1px white",
+        color: "transparent",
+        pointerEvents: "none", // so it doesn't block clicks
+        userSelect: "none",
+      }}
+    >
+      PRIME
+    </span>
+
+    {/* Gradient text layer */}
+    <span className="relative bg-[linear-gradient(to_bottom_right,_theme(colors.PRIMEblue)_0%,_theme(colors.PRIMEblue)_50%,_theme(colors.PRIMEred)_75%,_theme(colors.PRIMEyellow)_100%)] text-transparent bg-clip-text">
+      PRIME
+    </span>{' '}
+    <span className="text-PRIMEwhite">Philippines </span>
+  </span>
+</h1>
+
 
           {/* Tagline */}
           <div className="text-center md:text-left text-xl sm:text-2xl md:text-3xl lg:text-[22pt] mb-4 mt-4  overflow-hidden leading-snug w-full">
@@ -103,7 +117,7 @@ const Hero: React.FC = () => {
                 }`}
                 style={{ transitionDelay: animate ? "300ms" : "0ms" }}
               >
-                <span className="text-[#0E406F] font-bold">Real</span><span className="text-PRIMEwhite"> Estate.</span>
+                <span className="text-PRIMEyellow font-bold">Real</span><span className="text-PRIMEwhite"> Estate.</span>
               </span>
               <span
                 className={`inline-block transition-all duration-500 ease-out ${
@@ -113,7 +127,7 @@ const Hero: React.FC = () => {
                 }`}
                 style={{ transitionDelay: animate ? "700ms" : "0ms" }}
               >
-                <span className="text-[#0E406F] font-bold">We</span><span className="text-PRIMEwhite"> Advise. </span>
+                <span className="text-PRIMEyellow font-bold">We</span><span className="text-PRIMEwhite"> Advise. </span>
               </span>
               <span
                 className={`inline-block transition-all duration-500 ease-out ${
@@ -123,7 +137,7 @@ const Hero: React.FC = () => {
                 }`}
                 style={{ transitionDelay: animate ? "1000ms" : "0ms" }}
               >
-                <span className="text-[#0E406F] font-bold">You</span><span className="text-PRIMEwhite"> Advance. </span>
+                <span className="text-PRIMEyellow font-bold">You</span><span className="text-PRIMEwhite"> Advance. </span>
               </span>
             </div>
           </div>
