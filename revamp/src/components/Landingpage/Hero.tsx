@@ -50,16 +50,31 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative h-screen min-h-[600px] text-white">
+    <section className="relative h-screen min-h-[600px]">
 
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      />
+{/* Background Image */}
+<div
+  className="absolute inset-0 bg-cover bg-center"
+  style={{ backgroundImage: `url(${heroImage})` }}
+/>
 
-                {/* Overlay */}
-          <div className="absolute inset-0 bg-PRIMEblue/20 transition duration-300"></div>
+{/* Smooth Shaded Gradient Overlay (left top to right bottom) */}
+<div
+  className="absolute inset-0 transition duration-300"
+  style={{
+    backgroundImage: `linear-gradient(
+      to bottom right,
+      #003366dd 0%,       /* strong blue, 87% opacity */
+      #00294acc 45%,      /* darker blue shading */
+      #7a0000bb 75%,      /* deep red shade */
+      #cc000099 90%,      /* red with 60% opacity */
+      #e6ac0066 95%,      /* softer yellow-orange starts */
+      #ffbf0044 100%      /* light yellow ends */
+    )`
+  }}
+/>
+
+
 
       {/* Content Wrapper */}
       <div className="relative z-10 container mx-auto h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 text-center md:items-start md:justify-center md:text-left">
@@ -73,8 +88,8 @@ const Hero: React.FC = () => {
                   : "-translate-x-10 opacity-0"
               }`}
             >
-   <span className="bg-[linear-gradient(to_right,_theme(colors.PRIMEblue)_0%,_theme(colors.PRIMEblue)_50%,_theme(colors.PRIMEred)_75%,_theme(colors.PRIMEyellow)_100%)] text-transparent bg-clip-text">
-    PRIME</span>{' '} Philippines </span>
+          <span className="bg-[linear-gradient(to_right,_theme(colors.PRIMEblue)_0%,_theme(colors.PRIMEblue)_50%,_theme(colors.PRIMEred)_75%,_theme(colors.PRIMEyellow)_100%)] 
+          text-transparent bg-clip-text"> PRIME</span>{' '} <span className="text-PRIMEwhite">Philippines </span></span>
           </h1>
 
           {/* Tagline */}
@@ -88,7 +103,7 @@ const Hero: React.FC = () => {
                 }`}
                 style={{ transitionDelay: animate ? "300ms" : "0ms" }}
               >
-                <span className="text-[#0E406F] font-bold">Real</span> Estate.
+                <span className="text-[#0E406F] font-bold">Real</span><span className="text-PRIMEwhite"> Estate.</span>
               </span>
               <span
                 className={`inline-block transition-all duration-500 ease-out ${
@@ -98,7 +113,7 @@ const Hero: React.FC = () => {
                 }`}
                 style={{ transitionDelay: animate ? "700ms" : "0ms" }}
               >
-                <span className="text-[#0E406F] font-bold">We</span> Advise.
+                <span className="text-[#0E406F] font-bold">We</span><span className="text-PRIMEwhite"> Advise. </span>
               </span>
               <span
                 className={`inline-block transition-all duration-500 ease-out ${
@@ -108,7 +123,7 @@ const Hero: React.FC = () => {
                 }`}
                 style={{ transitionDelay: animate ? "1000ms" : "0ms" }}
               >
-                <span className="text-[#0E406F] font-bold">You</span> Advance.
+                <span className="text-[#0E406F] font-bold">You</span><span className="text-PRIMEwhite"> Advance. </span>
               </span>
             </div>
           </div>
@@ -119,7 +134,7 @@ const Hero: React.FC = () => {
               <span className="text-xl sm:text-2xl md:text-3xl lg:text-[22pt] font-bold text-white">
                 {sales.toLocaleString()}M+
               </span>
-              <span className="text-xs sm:text-sm text-[#0E406F] uppercase tracking-wider">
+              <span className="text-xs sm:text-sm text-PRIMEyellow uppercase tracking-wider">
                 Sales
               </span>
             </div>
@@ -127,7 +142,7 @@ const Hero: React.FC = () => {
               <span className="text-xl sm:text-2xl md:text-3xl lg:text-[22pt] font-bold text-white">
                 {clients.toLocaleString()}+
               </span>
-              <span className="text-xs sm:text-sm text-[#0E406F] uppercase tracking-wider">
+              <span className="text-xs sm:text-sm text-PRIMEyellow uppercase tracking-wider">
                 Clients
               </span>
             </div>
@@ -135,7 +150,7 @@ const Hero: React.FC = () => {
               <span className="text-xl sm:text-2xl md:text-3xl lg:text-[22pt] font-bold text-white">
                 {projects.toLocaleString()}+
               </span>
-              <span className="text-xs sm:text-sm text-[#0E406F] uppercase tracking-wider">
+              <span className="text-xs sm:text-sm text-PRIMEyellow uppercase tracking-wider">
                 Projects
               </span>
             </div>
@@ -143,7 +158,7 @@ const Hero: React.FC = () => {
               <span className="text-xl sm:text-2xl md:text-3xl lg:text-[22pt] font-bold text-white">
                 {studies.toLocaleString()}+
               </span>
-              <span className="text-xs sm:text-sm text-[#0E406F] uppercase tracking-wider">
+              <span className="text-xs sm:text-sm text-PRIMEyellow uppercase tracking-wider">
                 Studies
               </span>
             </div>
