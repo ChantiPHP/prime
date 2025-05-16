@@ -65,8 +65,9 @@ export default function Footer() {
           transition={{ duration: 0.6 }}
           className="space-y-6 text-[20px]"
         >
-        <h2 className="text-[48px] gotham-bold bg-[linear-gradient(to_right,_theme(colors.PRIMEblue)_0%,_theme(colors.PRIMEblue)_50%,_theme(colors.PRIMEred)_75%,_theme(colors.PRIMEyellow)_100%)] text-transparent bg-clip-text">
-          PRIME RADAR
+        <h2 className="text-[48px] gotham-bold ">
+           <span className="bg-[linear-gradient(to_right,_theme(colors.PRIMEblue)_0%,_theme(colors.PRIMEblue)_50%,_theme(colors.PRIMEred)_75%,_theme(colors.PRIMEyellow)_100%)] text-transparent bg-clip-text">
+    PRIME</span> <span className="text-PRIMEwhite">RADAR </span>
         </h2>
           <p className="leading-relaxed max-w-md">
             Get the latest real estate insights, events and news from our
