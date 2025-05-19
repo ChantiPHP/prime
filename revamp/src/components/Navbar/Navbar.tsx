@@ -71,23 +71,28 @@ const Navbar = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 font-[Gotham Book] ${navClasses}`}
     >
       <div className="w-full flex justify-between items-center">
-        {/* Left Logo with white background flush left */}
-        <div className="relative">
-          <div className="absolute left-0 top-0 h-full w-full bg-white z-[-1]" />
-          <motion.div
-            className="relative p-2 pr-4"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <Link to="/" onClick={scrollToTop}>
-              <img
-                src="/Logo/prime-logo.webp"
-                alt="PRIME Philippines Logo"
-                className="h-12 md:h-16 object-contain"
-              />
-            </Link>
-          </motion.div>
-        </div>
+<div className="relative">
+  <div
+    className="absolute left-0 top-0 h-full w-[110%] z-[-1]"
+    style={{
+      backgroundColor: 'white',
+      clipPath: 'polygon(0 0, 100% 0, 80% 100%, 0% 100%)',
+    }}
+  />
+  <motion.div
+    className="relative p-2 pr-4"
+    whileHover={{ scale: 1.03 }}
+    whileTap={{ scale: 0.98 }}
+  >
+    <Link to="/" onClick={scrollToTop}>
+      <img
+        src="/Logo/prime-logo.webp"
+        alt="PRIME Philippines Logo"
+        className="h-12 md:h-16 object-contain"
+      />
+    </Link>
+  </motion.div>
+</div>
 
         {/* Desktop Navigation Links */}
         {!isTabletOrMobile && (

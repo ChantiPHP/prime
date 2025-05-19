@@ -78,32 +78,42 @@ const Hero: React.FC = () => {
       <div className="relative z-10 container mx-auto h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 text-center md:items-start md:justify-center md:text-left">
         <div className="w-full max-w-[800px]">
           {/* Title */}
-         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[50pt] font-bold overflow-hidden leading-tight">
+         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[50pt] font-bold overflow-hidden leading-tight relative">
   <span
-    className={`inline-block transition-all duration-500 ease-out ${
+    className={`inline-block transition-all duration-500 ease-out relative z-10 ${
       animate ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
     }`}
   >
-    {/* Stroked text layer */}
-    <span
-      className="absolute inset-0"
-      style={{
-        WebkitTextStroke: "1px white",
-        color: "transparent",
-        pointerEvents: "none", // so it doesn't block clicks
-        userSelect: "none",
-      }}
-    >
-      PRIME
-    </span>
+    {/* Container for PRIME text */}
+    <span className="relative inline-block">
+      {/* Stroked text layer */}
+      <span
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{
+          WebkitTextStroke: "1px white",
+          color: "transparent",
+          pointerEvents: "none",
+          userSelect: "none",
+          WebkitTextFillColor: "transparent",
+          // Prevent stroke from shifting:
+          left: 0,
+          top: 0,
+          whiteSpace: "nowrap",
+        }}
+      >
+        PRIME
+      </span>
 
-    {/* Gradient text layer */}
-    <span className="relative bg-[linear-gradient(to_bottom_right,_theme(colors.PRIMEblue)_0%,_theme(colors.PRIMEblue)_50%,_theme(colors.PRIMEred)_75%,_theme(colors.PRIMEyellow)_100%)] text-transparent bg-clip-text">
-      PRIME
-    </span>{' '}
-    <span className="text-PRIMEwhite">Philippines </span>
+      {/* Gradient text layer */}
+      <span className="relative bg-[linear-gradient(to_bottom_right,_theme(colors.PRIMEblue)_0%,_theme(colors.PRIMEblue)_50%,_theme(colors.PRIMEred)_75%,_theme(colors.PRIMEyellow)_100%)] text-transparent bg-clip-text select-none">
+        PRIME
+      </span>
+    </span>{" "}
+    <span className="text-PRIMEwhite select-none">Philippines</span>
   </span>
 </h1>
+
 
 
           {/* Tagline */}

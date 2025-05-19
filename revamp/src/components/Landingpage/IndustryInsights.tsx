@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { FaBuilding } from "react-icons/fa";
 
+// Interfaces
 interface PropertyCard {
   id: string;
   title: string;
@@ -20,6 +21,7 @@ interface IndustryInsightsProps {
   resetFilters?: () => void;
 }
 
+// Main Component
 export default function IndustryInsights({
   onCardClick,
   highlightedCategory,
@@ -76,6 +78,9 @@ export default function IndustryInsights({
     },
   ];
 
+  const isCategorySelected =
+    highlightedCategory && highlightedCategory !== "All Categories";
+
   const handleCardClick = (filterValue: string) => {
     if (onCardClick) {
       onCardClick(filterValue);
@@ -85,15 +90,13 @@ export default function IndustryInsights({
   };
 
   const handleReset = () => {
-    if (resetFilters) resetFilters();
+    resetFilters?.();
   };
-
-  const isCategorySelected =
-    highlightedCategory && highlightedCategory !== "All Categories";
 
   return (
     <section className="flex items-center justify-center px-4 py-20 font-gotham-book bg-white">
-      <div className="w-full max-w-[1400px] flex flex-col items-center">
+      <div className="w-full max-w-[1500px] flex flex-col items-center">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -101,7 +104,6 @@ export default function IndustryInsights({
           viewport={{ once: true }}
           className="mb-14"
         >
-          {/* Header */}
           <div className="flex justify-center items-center mb-8 text-PRIMEblue font-gotham-bold text-sm tracking-wide space-x-2">
             <FaBuilding className="text-xl" />
             <span>INSIGHTS</span>
@@ -120,9 +122,7 @@ export default function IndustryInsights({
           </div>
 
           <p className="text-description font-gotham-book text-PRIMEgray mt-4 max-w-2xl mx-auto text-center leading-relaxed">
-            Explore Prime Philippines' commercial spaces for lease, featuring
-            premium office buildings and expert insights to find the perfect
-            workspace for your business.
+            Explore Prime Philippines' commercial spaces for lease, featuring premium office buildings and expert insights to find the perfect workspace for your business.
           </p>
 
           {/* Reset Button */}
@@ -147,7 +147,7 @@ export default function IndustryInsights({
         {/* Top Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
           {cards.slice(0, 3).map((card) => (
-            <Card
+            <InsightCard
               key={card.id}
               card={card}
               hoveredCard={hoveredCard}
@@ -161,7 +161,7 @@ export default function IndustryInsights({
         {/* Bottom Cards */}
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-8 w-full max-w-4xl">
           {cards.slice(3).map((card) => (
-            <Card
+            <InsightCard
               key={card.id}
               card={card}
               hoveredCard={hoveredCard}
@@ -176,8 +176,8 @@ export default function IndustryInsights({
   );
 }
 
-// Reusable Card Component
-const Card = ({
+// Card Component
+const InsightCard = ({
   card,
   hoveredCard,
   setHoveredCard,
@@ -223,19 +223,13 @@ const Card = ({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         <div className="absolute bottom-4 left-4 text-white z-10">
-          <h4 className="text-[14pt] font-gotham-bold drop-shadow-md">
-            {card.title}
-          </h4>
-          <p className="text-description font-gotham-book text-[#cccccc]">
-            {card.location}
-          </p>
+          <h4 className="text-[14pt] font-gotham-bold drop-shadow-md">{card.title}</h4>
+          <p className="text-description font-gotham-book text-[#cccccc]">{card.location}</p>
         </div>
       </div>
 
       <div className="p-5 relative z-10">
-        <p className="text-subcontent font-gotham-book text-PRIMEgray mb-4">
-          {card.desc}
-        </p>
+        <p className="text-subcontent font-gotham-book text-PRIMEgray mb-4">{card.desc}</p>
         <Button
           variant="default"
           className="text-white w-full bg-PRIMEblue hover:bg-[#0b3358]"
@@ -244,11 +238,7 @@ const Card = ({
             handleCardClick(card.filterValue);
           }}
         >
-          {isSelected ? (
-            <>Viewing {card.filterValue}</>
-          ) : (
-            <>View {card.filterValue}</>
-          )}
+          {isSelected ? `Viewing ${card.filterValue}` : `View ${card.filterValue}`}
         </Button>
       </div>
     </motion.div>
