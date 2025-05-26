@@ -77,20 +77,15 @@ export default function ViewProperties() {
       return;
     }
 
-    try {
-      const res = await axios.post("http://localhost:8000/api/contact", formData);
-      if (res.status === 200 || res.status === 201) {
-        alert("Message sent successfully!");
-        setFormData({ name: "", phone: "", email: "", message: "" });
-      } else {
-        alert("Something went wrong.");
-      }
-    } catch (error) {
-      console.error(error);
-      alert("Failed to send message.");
-    }
-  };
-
+     try {
+    await axios.post("http://localhost:5173/api/contact-form", formData);
+    alert("Message sent successfully!");
+    setFormData({ name: "", phone: "", email: "", message: "" });
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong.");
+  }
+};
   if (!property) {
     return (
       <div className="min-h-screen flex items-center justify-center">
