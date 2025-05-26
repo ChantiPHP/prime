@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Mail, Phone } from "lucide-react";
@@ -28,12 +28,18 @@ const locations = [
 ];
 
 export default function Contact() {
+  
   const [activeLocation, setActiveLocation] = useState("Manila");
   const [isHovered, setIsHovered] = useState({
     email: false,
     phone: false,
     address: false,
   });
+
+  // Scroll to the top of the page when the component is rendered
+    useEffect(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, []);
 
   const current = locations.find((loc) => loc.city === activeLocation);
 

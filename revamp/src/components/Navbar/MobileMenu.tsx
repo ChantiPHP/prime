@@ -1,85 +1,83 @@
-import { motion } from "framer-motion";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { FaTimes } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface MobileMenuProps {
+  menuItems: Array<{
+    label: string;
+    to?: string;
+    subItems?: Array<{ label: string; to: string }>;
+  }>;
+  activeDropdown: string | null;
+  toggleDropdown: (menu: string) => void;
   scrollToTop: () => void;
-  menuRef: React.RefObject<HTMLDivElement | null>;
-  setMenuOpen: (open: boolean) => void;
+  textColorClass: string; // Still passed for compatibility, but ignored in mobile for consistent black text
 }
 
-const MobileMenu = ({ scrollToTop, menuRef, setMenuOpen }: MobileMenuProps) => {
-  const linkClass = `
-    font-[Gotham Bold] uppercase text-[12pt] md:text-[14pt]
-    hover:text-PRIMEblue text-PRIMEblack transition-colors
-  `;
+export const MobileMenu = ({
+  menuItems,
+  activeDropdown,
+  toggleDropdown,
+  scrollToTop
+}: MobileMenuProps) => (
+  <motion.div
+    initial={{ opacity: 0, height: 0 }}
+    animate={{ opacity: 1, height: "auto" }}
+    exit={{ opacity: 0, height: 0 }}
+    transition={{ duration: 0.3 }}
+    className="lg:hidden bg-PRIMEwhite shadow-lg w-full absolute left-0 z-50"
+  >
+    <div className="px-4 py-2 space-y-1">
+      {menuItems.map((item, index) => (
+        <div key={index} className="border-b border-gray-100 last:border-0">
+          {!item.subItems ? (
+            <Link
+              to={item.to!}
+              onClick={scrollToTop}
+              className="block py-4 px-4 font-[Gotham Bold] uppercase text-PRIMEblack hover:text-PRIMEblue transition-colors"
+            >
+              {item.label}
+            </Link>
+          ) : (
+            <div className="py-2">
+              <button
+                onClick={() => toggleDropdown(`mobile-menu-${index}`)}
+                className="w-full flex justify-between items-center py-2 px-4 font-[Gotham Bold] uppercase text-black hover:text-PRIMEblue transition-colors"
+              >
+                {item.label}
+                {activeDropdown === `mobile-menu-${index}` ? (
+                  <FaChevronUp className="text-xs" />
+                ) : (
+                  <FaChevronDown className="text-xs" />
+                )}
+              </button>
 
-  const mobileMenuVariants = {
-    hidden: { x: "-100%" },
-    visible: {
-      x: 0,
-      transition: { type: "tween", ease: "easeOut", duration: 0.25 },
-    },
-    exit: {
-      x: "-100%",
-      transition: { type: "tween", ease: "easeIn", duration: 0.2 },
-    }
-  };
-
-  const menuItems = [
-    { label: "Expertise", to: "/expertise" },
-    { label: "Services", to: "/services" },
-    { label: "Find a Property", to: "/properties" },
-    { label: "PRIME Leadership", to: "/about/leadership" },
-    { label: "Awards and Recognition", to: "/about/awards" },
-    { label: "Careers", to: "/careers" },
-    { label: "Events", to: "/events" },
-    { label: "Pressroom", to: "/pressroom" },
-    { label: "Contact", to: "/contact" }
-  ];
-
-  return (
-    <motion.div
-      ref={menuRef}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      variants={mobileMenuVariants}
-      className="fixed top-0 left-0 h-full w-72 md:w-80 bg-PRIMEwhite text-PRIMEblack z-40 shadow-xl flex flex-col"
-    >
-      {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-200">
-        <Link to="/" onClick={scrollToTop}>
-          <img
-            src="/prime-logo.png"
-            alt="PRIME Logo"
-            className="h-10 md:h-12 object-contain"
-          />
-        </Link>
-        <motion.button
-          onClick={() => setMenuOpen(false)}
-          whileHover={{ rotate: 90 }}
-          className="text-PRIMEgray hover:text-PRIMEblack transition-colors"
-        >
-          <FaTimes className="text-xl" />
-        </motion.button>
-      </div>
-
-      {/* Links */}
-      <div className="flex flex-col p-4 gap-4 overflow-y-auto">
-        {menuItems.map(({ label, to }, i) => (
-          <Link
-            key={i}
-            to={to}
-            onClick={scrollToTop}
-            className={linkClass}
-          >
-            {label}
-          </Link>
-        ))}
-      </div>
-    </motion.div>
-  );
-};
-
-export default MobileMenu;
+              <AnimatePresence>
+                {activeDropdown === `mobile-menu-${index}` && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="pl-6 overflow-hidden space-y-2 py-2"
+                  >
+                    {item.subItems.map((subItem, subIndex) => (
+                      <Link
+                        key={subIndex}
+                        to={subItem.to}
+                        onClick={scrollToTop}
+                        className="block py-2 text-sm font-[Gotham Book] text-black hover:text-PRIMEblue transition-colors"
+                      >
+                        {subItem.label}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </motion.div>
+);

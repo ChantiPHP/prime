@@ -1,196 +1,151 @@
 import React, { useEffect, useState } from "react";
-import heroImage from "@/assets/cebu.jpg";
+import { cn } from "@/lib/utils";
 
-const Hero: React.FC = () => {
-  const [sales, setSales] = useState(0);
-  const [clients, setClients] = useState(0);
-  const [projects, setProjects] = useState(0);
-  const [studies, setStudies] = useState(0);
+const HeroSection: React.FC = () => {
+  const [stats, setStats] = useState({
+    sales: 0,
+    clients: 0,
+    projects: 0,
+    studies: 0,
+  });
+
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-    setAnimate(false); // Reset first
-
-    const timeout = setTimeout(() => {
-      setAnimate(true);
-
-      const animateCount = (
-        setFn: React.Dispatch<React.SetStateAction<number>>,
-        target: number,
-        duration: number = 1500
-      ) => {
-        const startTime = performance.now();
-        const easeOutQuad = (t: number) => t * (2 - t);
-
-        const updateCounter = (currentTime: number) => {
-          const elapsedTime = currentTime - startTime;
-          const progress = Math.min(elapsedTime / duration, 1);
-          const easedProgress = easeOutQuad(progress);
-          const currentValue = Math.floor(easedProgress * target);
-
-          setFn(currentValue);
-
-          if (progress < 1) {
-            requestAnimationFrame(updateCounter);
-          } else {
-            setFn(target);
-          }
-        };
-
-        requestAnimationFrame(updateCounter);
-      };
-
-      animateCount(setSales, 500);
-      setTimeout(() => animateCount(setClients, 7000), 100);
-      setTimeout(() => animateCount(setProjects, 3000), 200);
-      setTimeout(() => animateCount(setStudies, 150), 300);
-    }, 100); // Small delay before triggering to ensure proper reset
-
-    return () => clearTimeout(timeout); // Cleanup
+    setAnimate(false);
+    const timer = setTimeout(() => setAnimate(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    if (!animate) return;
+
+    const easeOutQuad = (t: number) => t * (2 - t);
+    const animateCount = (
+      key: keyof typeof stats,
+      target: number,
+      delay: number
+    ) => {
+      setTimeout(() => {
+        const start = performance.now();
+        const duration = 1500;
+        const step = (now: number) => {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const value = Math.floor(easeOutQuad(progress) * target);
+          setStats((prev) => ({ ...prev, [key]: value }));
+          if (progress < 1) requestAnimationFrame(step);
+          else setStats((prev) => ({ ...prev, [key]: target }));
+        };
+        requestAnimationFrame(step);
+      }, delay);
+    };
+
+    animateCount("sales", 500, 0);
+    animateCount("clients", 7000, 200);
+    animateCount("projects", 3000, 400);
+    animateCount("studies", 150, 600);
+  }, [animate]);
+
+  const tagline = [
+    { text: 'REAL ESTATE.', delay: 0 },
+    { text: 'WE ADVICE.', delay: 500 },
+    { text: 'YOU ADVANCE.', delay: 1000 }
+  ];
+
+  const statData = [
+    {
+      label: 'worth of deals transacted',
+      prefix: 'USD',
+      value: stats.sales,
+      suffix: 'M+',
+    },
+    {
+      label: 'clients served',
+      value: stats.clients,
+      suffix: '+',
+    },
+    {
+      label: 'real estate projects',
+      value: stats.projects,
+      suffix: '+',
+    },
+    {
+      label: 'research studies done',
+      value: stats.studies,
+      suffix: '+',
+    },
+  ];
+
   return (
-    <section className="relative h-screen min-h-[600px]">
+    <div className="w-full m-0 p-0 font-gotham">
+      <header className="relative">
+        <div className="relative">
+          <img
+            src="/HomeBanner.jpg"
+            alt="Cityscape night skyline with buildings and lights"
+            className="w-full h-[500px] sm:h-[600px] md:h-[700px] object-cover"
+          />
 
-{/* Background Image */}
-<div
-  className="absolute inset-0 bg-cover bg-center"
-  style={{ backgroundImage: `url(${heroImage})` }}
-/>
+          <div
+            className="absolute inset-0 flex flex-col justify-center items-center px-4 sm:px-6 text-center text-PRIMEwhite w-full"
+            style={{ top: '60%', transform: 'translateY(-50%)' }}
+          >
+            <h1 className="text-title font-extrabold flex flex-wrap justify-center gap-6 text-center">
+{tagline.map(({ text, delay }, i) => {
+  const words = text.split(" ");
+  return (
+    <span
+      key={i}
+      className={cn(
+        "inline-block transition-all duration-500",
+        animate ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+      )}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {text === 'REAL ESTATE.' ? (
+        <span className="text-white font-extrabold">{text}</span>
+      ) : (
+        <>
+          <span className="text-white font-normal">{words[0]} </span>
+          <span className="text-PRIMEyellow font-extrabold">{words[1]}</span>
+        </>
+      )}
+    </span>
+  );
+})}
 
-{/* Smooth Shaded Gradient Overlay (left top to right bottom) */}
-<div
-  className="absolute inset-0 transition duration-300"
-  style={{
-    backgroundImage: `linear-gradient(
-      to bottom right,
-      #003366dd 0%,       /* strong blue, 87% opacity */
-      #00294acc 45%,      /* darker blue shading */
-      #7a0000bb 75%,      /* deep red shade */
-      #cc000099 90%,      /* red with 60% opacity */
-      #e6ac0066 95%,      /* softer yellow-orange starts */
-      #ffbf0044 100%      /* light yellow ends */
-    )`
-  }}
-/>
+            </h1>
 
-      {/* Content Wrapper */}
-      <div className="relative z-10 container mx-auto h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 text-center md:items-start md:justify-center md:text-left">
-        <div className="w-full max-w-[800px]">
-          {/* Title */}
-         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[50pt] font-bold overflow-hidden leading-tight relative">
-  <span
-    className={`inline-block transition-all duration-500 ease-out relative z-10 ${
-      animate ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
-    }`}
-  >
-    {/* Container for PRIME text */}
-    <span className="relative inline-block">
-      {/* Stroked text layer */}
-      <span
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={{
-          WebkitTextStroke: "1px white",
-          color: "transparent",
-          pointerEvents: "none",
-          userSelect: "none",
-          WebkitTextFillColor: "transparent",
-          // Prevent stroke from shifting:
-          left: 0,
-          top: 0,
-          whiteSpace: "nowrap",
-        }}
-      >
-        PRIME
-      </span>
+            <hr className="border-PRIMEyellow border-2 w-full max-w-5xl sm:max-w-6xl mt-4 mb-8 sm:mb-12 md:mb-16" />
 
-      {/* Gradient text layer */}
-      <span className="relative bg-[linear-gradient(to_bottom_right,_theme(colors.PRIMEblue)_0%,_theme(colors.PRIMEblue)_50%,_theme(colors.PRIMEred)_75%,_theme(colors.PRIMEyellow)_100%)] text-transparent bg-clip-text select-none">
-        PRIME
-      </span>
-    </span>{" "}
-    <span className="text-PRIMEwhite select-none">Philippines</span>
-  </span>
-</h1>
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-x-6 gap-y-6 sm:gap-x-12 w-full max-w-4xl sm:max-w-5xl">
+              {statData.map((stat, index) => (
+                <div key={index} className="text-center px-2 sm:px-0">
+                  <p className="text-xsubtitle font-extrabold">
+                    {stat.prefix ? `${stat.prefix} ` : ""}
+                    {stat.value.toLocaleString()}
+                    {stat.suffix}
+                  </p>
+                  <p className="text-subcontent mt-1">{stat.label}</p>
 
-
-
-          {/* Tagline */}
-          <div className="text-center md:text-left text-xl sm:text-2xl md:text-3xl lg:text-[22pt] mb-4 mt-4  overflow-hidden leading-snug w-full">
-            <div className="flex flex-wrap justify-center md:justify-start gap-2">
-              <span
-                className={`inline-block transition-all duration-500 ease-out ${
-                  animate
-                    ? "translate-x-0 opacity-100"
-                    : "-translate-x-8 opacity-0"
-                }`}
-                style={{ transitionDelay: animate ? "300ms" : "0ms" }}
-              >
-                <span className="text-PRIMEyellow font-bold">Real</span><span className="text-PRIMEwhite"> Estate.</span>
-              </span>
-              <span
-                className={`inline-block transition-all duration-500 ease-out ${
-                  animate
-                    ? "translate-x-0 opacity-100"
-                    : "-translate-x-8 opacity-0"
-                }`}
-                style={{ transitionDelay: animate ? "700ms" : "0ms" }}
-              >
-                <span className="text-PRIMEyellow font-bold">We</span><span className="text-PRIMEwhite"> Advise. </span>
-              </span>
-              <span
-                className={`inline-block transition-all duration-500 ease-out ${
-                  animate
-                    ? "translate-x-0 opacity-100"
-                    : "-translate-x-8 opacity-0"
-                }`}
-                style={{ transitionDelay: animate ? "1000ms" : "0ms" }}
-              >
-                <span className="text-PRIMEyellow font-bold">You</span><span className="text-PRIMEwhite"> Advance. </span>
-              </span>
-            </div>
-          </div>
-
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4 text-center md:text-left w-full max-w-lg mx-auto md:mx-0">
-            <div className="flex flex-col p-2 sm:p-3 items-center bg-white/10 rounded-lg backdrop-blur-sm">
-              <span className="text-xl sm:text-2xl md:text-3xl lg:text-[22pt] font-bold text-white">
-                {sales.toLocaleString()}M+
-              </span>
-              <span className="text-xs sm:text-sm text-PRIMEyellow uppercase tracking-wider">
-                Sales
-              </span>
-            </div>
-            <div className="flex flex-col p-2 sm:p-3 items-center bg-white/10 rounded-lg backdrop-blur-sm">
-              <span className="text-xl sm:text-2xl md:text-3xl lg:text-[22pt] font-bold text-white">
-                {clients.toLocaleString()}+
-              </span>
-              <span className="text-xs sm:text-sm text-PRIMEyellow uppercase tracking-wider">
-                Clients
-              </span>
-            </div>
-            <div className="flex flex-col p-2 sm:p-3 items-center bg-white/10 rounded-lg backdrop-blur-sm">
-              <span className="text-xl sm:text-2xl md:text-3xl lg:text-[22pt] font-bold text-white">
-                {projects.toLocaleString()}+
-              </span>
-              <span className="text-xs sm:text-sm text-PRIMEyellow uppercase tracking-wider">
-                Projects
-              </span>
-            </div>
-            <div className="flex flex-col p-2 sm:p-3 items-center bg-white/10 rounded-lg backdrop-blur-sm">
-              <span className="text-xl sm:text-2xl md:text-3xl lg:text-[22pt] font-bold text-white">
-                {studies.toLocaleString()}+
-              </span>
-              <span className="text-xs sm:text-sm text-PRIMEyellow uppercase tracking-wider">
-                Studies
-              </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </header>
+
+      <section className="py-8 sm:py-10 md:py-12 px-4 sm:px-6 max-w-5xl mx-auto text-center">
+        <h2 className="text-subtitle mx-auto">
+          An <span className="text-PRIMEblue"> award-winning</span> & recognized leader in the Philippine commercial and industrial real estate service industry.
+        </h2>
+        <p className="mt-4 sm:mt-6 text-content mx-auto font-gotham-book">
+          <span className="text-PRIMEblue">Entrust your real estate needs</span> to a company well-equipped to deal with today's modern real estate business, with offices in Manila, Davao, and Cebu.
+        </p>
+      </section>
+    </div>
   );
 };
 
-export default Hero;
+export default HeroSection;

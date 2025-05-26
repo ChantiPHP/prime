@@ -21,6 +21,11 @@ export const Events = (): JSX.Element => {
     minutes: 22,
     seconds: 0,
   });
+
+   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }, [])
+  
   const [eventEnded, setEventEnded] = useState<boolean>(false);
 
   const currentEvent: EventData = eventsData[currentEventIndex];

@@ -283,7 +283,7 @@ export default function PropertiesPage() {
                         handlePrev(index);
                       }
                     }}
-                    className={`absolute left-[-60px] z-10  transition-opacity
+                    className={`absolute left-[-60px] z-10 transition-opacity
                       ${page === 0 ? "opacity-50 pointer-events-none cursor-default" : ""}
                     `}
                   >

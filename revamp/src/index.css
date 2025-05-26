@@ -56,42 +56,43 @@ html {
 }
 
 @layer base {
-  /* for main titles */
-  h1 {
-    font-size: 60px;
+ /* Title Headings */
+  h1, .text-title {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[52px];
   }
 
-  /* for sub titles */
-  h2 {
-    font-size: 48px;
+  /* Sub Titles */
+  h2, .text-maintitle {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-[42px];
   }
 
-  /* for body/content */
-  h6 {
-    font-size: 20px;
+   /* Custom Subtitle For Stats Grid*/
+  .text-xsubtitle {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-[38px];
   }
 
-  .text-title {
-    @apply text-[60px];
-  }
-
-  .text-maintitle {
-    @apply sm:text-[32px] md:text-[48px];
-  }
-
+  /* Smaller Heading or Section Subtitle */
   .text-subtitle {
-    @apply sm:text-[24px] md:text-[30px];
+    @apply text-lg sm:text-xl md:text-2xl lg:text-[30px];
   }
 
-  .text-content {
-    @apply text-[20px];
+   /* Paragraph or Body Content */
+  h6, .text-content {
+    @apply text-base sm:text-lg md:text-xl lg:text-[20px];
   }
 
+    /* Custom Navbar */
+  .text-navbar {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-[18px];
+  }
+
+  /* General Descriptive Text */
   .text-description {
-    @apply text-[16px];
+    @apply text-sm sm:text-base md:text-lg lg:text-[18px];
   }
 
+  /* Small Details or Footnotes */
   .text-subcontent {
-    @apply text-[14px];
+    @apply text-xs sm:text-sm md:text-base lg:text-[16px];
   }
 }

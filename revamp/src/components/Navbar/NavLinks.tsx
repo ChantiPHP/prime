@@ -1,141 +1,100 @@
-import { useEffect, useState } from "react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
-interface NavLinksProps {
+// NavLink Component
+interface NavLinkProps {
+  to: string;
+  label: string;
+  textColorClass: string;
   scrollToTop: () => void;
-  isScrolled: boolean;
+  isContact?: boolean;
 }
 
-const NavLinks = ({ scrollToTop, isScrolled }: NavLinksProps) => {
-  const [aboutDropdown, setAboutDropdown] = useState(false);
-
-  useEffect(() => {
-    const handleClose = () => setAboutDropdown(false);
-    document.addEventListener("closeDropdown", handleClose);
-    return () => document.removeEventListener("closeDropdown", handleClose);
-  }, []);
-
-  const textColorClass = isScrolled ? "text-PRIMEgray" : "text-white";
-
-  const linkClass = `
-    font-[Gotham Bold] uppercase relative text-[12pt] lg:text-[14pt]
-    after:content-[''] after:absolute after:bottom-0 after:left-0 
-    after:w-0 after:h-0.5 after:bg-PRIMEblue after:transition-all after:duration-300
-    hover:after:w-full transition-all duration-200
-  `;
-
-  const dropdownVariants = {
-    hidden: { opacity: 0, y: -10 },
-    visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.05 } },
-    exit: { opacity: 0, y: -10 },
-  };
+export const NavLink = ({
+  to,
+  label,
+  textColorClass,
+  scrollToTop,
+}: NavLinkProps) => {
+  const underlineColor = textColorClass.includes("text-white")
+    ? "bg-white"
+    : "bg-PRIMEblue";
 
   return (
-    <>
-      <Link
-        to="/expertise"
-        className={`${linkClass} px-2 py-1 ${textColorClass}`}
-        onClick={scrollToTop}
-      >
-        Expertise
-      </Link>
-      <Link
-        to="/services"
-        className={`${linkClass} px-2 py-1 ${textColorClass}`}
-        onClick={scrollToTop}
-      >
-        Services
-      </Link>
-      <Link
-        to="/properties"
-        className={`${linkClass} px-2 py-1 ${textColorClass}`}
-        onClick={scrollToTop}
-      >
-        Find a Property
-      </Link>
-
-      {/* ABOUT US DROPDOWN */}
-      <div className="relative">
-        <button
-          onClick={() => setAboutDropdown(!aboutDropdown)}
-          className={`${linkClass} px-2 py-1 flex items-center ${textColorClass}`}
-        >
-          About Us
-          {aboutDropdown ? (
-            <FaChevronUp className="ml-1 text-xs" />
-          ) : (
-            <FaChevronDown className="ml-1 text-xs" />
-          )}
-        </button>
-
-        <AnimatePresence>
-          {aboutDropdown && (
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              variants={dropdownVariants}
-              className="absolute left-0 mt-2 w-56 bg-PRIMEwhite shadow-xl rounded-md py-2 z-50 border border-gray-100"
-            >
-              {[
-                ["PRIME Leadership", "leadership"],
-                ["Awards and Recognition", "awards"],
-              ].map(([label, link], i) => (
-                <motion.div key={i} variants={dropdownVariants}>
-                  <Link
-                    to={`/about/${link}`}
-                    onClick={scrollToTop}
-                    className="block px-4 py-2 text-[12pt] font-[Gotham Book] text-PRIMEgray hover:bg-blue-50 transition-colors"
-                  >
-                    {label}
-                  </Link>
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-
-      <Link
-        to="/careers"
-        className={`${linkClass} px-2 py-1 ${textColorClass}`}
-        onClick={scrollToTop}
-      >
-        Careers
-      </Link>
-      <Link
-        to="/events"
-        className={`${linkClass} px-2 py-1 ${textColorClass}`}
-        onClick={scrollToTop}
-      >
-        Events
-      </Link>
-      <Link
-        to="/pressroom"
-        className={`${linkClass} px-2 py-1 ${textColorClass}`}
-        onClick={scrollToTop}
-      >
-        Pressroom
-      </Link>
-
-      {/* CONTACT CTA */}
-      <motion.div
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="ml-2"
-      >
-        <Link
-          to="/contact"
-          onClick={scrollToTop}
-          className="bg-PRIMEblue text-white px-4 py-2 rounded-full shadow-md text-[14pt] font-[Gotham Bold] transition-all"
-        >
-          CONTACT
-        </Link>
-      </motion.div>
-    </>
+    <Link
+      to={to}
+      onClick={scrollToTop}
+      className={`group relative font-[Gotham Bold] uppercase text-navbar px-2 py-2 transition-colors ${textColorClass}`}
+    >
+      {label}
+      <span
+        className={`absolute bottom-0 left-0 h-[2px] w-0 ${underlineColor} transition-all duration-300 group-hover:w-full group-focus:w-full`}
+      />
+    </Link>
   );
 };
 
-export default NavLinks;
+// DropdownLink Component
+interface DropdownLinkProps {
+  label: string;
+  textColorClass: string;
+  isActive: boolean;
+  toggleDropdown: () => void;
+  subItems: Array<{ label: string; to: string }>;
+  scrollToTop: () => void;
+}
+
+export const DropdownLink = ({
+  label,
+  textColorClass,
+  isActive,
+  toggleDropdown,
+  subItems,
+  scrollToTop,
+}: DropdownLinkProps) => {
+  const underlineColor = textColorClass.includes("text-white")
+    ? "bg-white"
+    : "bg-PRIMEblue";
+
+  return (
+    <div className="relative group">
+      <button
+        onClick={toggleDropdown}
+        className={`group relative font-[Gotham Bold] uppercase text-navbar px-2 py-2 flex items-center ${textColorClass}`}
+      >
+        {label}
+        {isActive ? (
+          <FaChevronUp className="ml-1 text-xs" />
+        ) : (
+          <FaChevronDown className="ml-1 text-xs" />
+        )}
+        <span
+          className={`absolute bottom-0 left-0 h-[2px] w-0 ${underlineColor} transition-all duration-300 group-hover:w-full group-focus:w-full`}
+        />
+      </button>
+
+      <AnimatePresence>
+        {isActive && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="absolute left-1/2 transform -translate-x-1/2 mt-0 min-w-[250px] bg-white shadow-xl rounded-b-lg py-2 z-50 border border-gray-100"
+          >
+            {subItems.map((subItem, index) => (
+              <Link
+                key={index}
+                to={subItem.to}
+                onClick={scrollToTop}
+                className="block px-6 py-2 text-sm font-[Gotham Book] text-PRIMEgray hover:bg-blue-50 transition-colors"
+              >
+                {subItem.label}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
