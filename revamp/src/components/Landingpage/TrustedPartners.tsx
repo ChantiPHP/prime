@@ -146,18 +146,18 @@ export default function TrustedPartners() {
           transition={{ duration: 0.5 }}
           className="z-10 w-[220px] h-[280px] md:w-[260px] md:h-[320px] flex flex-col items-center justify-start text-center px-4 pt-4"
         >
-          <div className="bg-white rounded-xl p-4 w-full flex flex-col items-center justify-center h-full shadow-lg">
+          <div className="bg-white/80 rounded-xl p-4 w-full flex flex-col items-center justify-center h-full shadow-lg">
             <div className="w-28 h-28 md:w-36 md:h-36 flex items-center justify-center mb-3">
               <img
                 src={partners[current].logo}
                 alt={partners[current].name}
-                className="max-w-[100%] max-h-[100%] object-contain transition-transform duration-300 hover:scale-105"
+                className="max-w-[100%] max-h-[100%] object-contain"
               />
             </div>
-            <h3 className="text-subtitle font-semibold text-black mb-1">
+            <h3 className="text-subtitle font-semibold text-PRIMEblue mb-1">
               {partners[current].name}
             </h3>
-            <p className="text-subcontent text-gray-700 leading-snug">
+            <p className="text-subcontent text-PRIMEblue leading-snug">
               {partners[current].description || "Trusted partner in the industry."}
             </p>
           </div>

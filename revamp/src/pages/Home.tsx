@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar/Navbar";
-import Hero from "@/components/Landingpage/Hero";
+import Hero2 from "@/components/Landingpage/Hero2";
 import Footer from "@/components/Footer";
 import IndustryInsights from "@/components/Landingpage/IndustryInsights";
 import OurExpertise from "@/components/Landingpage/OurExpertise";
@@ -15,7 +15,7 @@ function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <Hero/>
+      <Hero2/>
       <OurExpertise />
       <IndustryInsights />
       <EventBanner />

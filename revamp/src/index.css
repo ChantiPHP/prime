@@ -95,4 +95,9 @@ html {
   .text-subcontent {
     @apply text-xs sm:text-sm md:text-base lg:text-[16px];
   }
+
+    /* All tags */
+  .text-tags {
+    @apply text-xs sm:text-sm md:text-base lg:text-[12px];
+  }
 }

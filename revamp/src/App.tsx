@@ -9,9 +9,10 @@ import Awards from "@/pages/About/Awards";
 import Leadership from "@/pages/About/Leadership";
 import Properties from "@/pages/Property/Properties";
 import ViewProperties from "@/pages/Property/View-Properties";
+import ViewProperties2 from "@/pages/Property/ViewProperties2";
 import { Events } from "@/pages/Events";
 import Pressroom from "@/pages/Pressroom";
-
+import  PropertiesPage  from "@/pages/Property/PropertiesPage";
 
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
         <Route path="/about/leadership" element={<Leadership />} />
         <Route path="/properties" element={<Properties />} />
         <Route path="/view-properties/:id" element={<ViewProperties />} />
+        <Route path="/ViewProperties2" element={<ViewProperties2 />} />
+        <Route path="/PropertiesPage" element={<PropertiesPage />} />
         <Route path="/events" element={<Events />} />
         <Route path="/pressroom" element={<Pressroom />} /> 
       </Routes>
