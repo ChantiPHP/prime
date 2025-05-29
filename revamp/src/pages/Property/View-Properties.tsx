@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom"; // Import useParams for dynamic ro
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/layout/Navbar/Navbar";
+import Footer from "@/components/layout/Footer";
 
 import {
   MapPin,
@@ -15,7 +15,7 @@ import {
   HouseIcon,
 } from "lucide-react";
 
-import { properties, Property } from "@/data/propertyData"; // Import the properties data
+import { properties, Property } from "./data/propertiesData"; // Import the properties data
 
 export default function ViewProperties() {
   const { id } = useParams<{ id: string }>(); // Get the property ID from the URL

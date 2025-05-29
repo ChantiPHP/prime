@@ -2,8 +2,8 @@ import { useState } from "react";
 import { PhoneCall, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/layout/Navbar/Navbar";
+import Footer from "@/components/layout/Footer";
 
 const ServicesPage = () => {
   const [selectedService, setSelectedService] = useState<number>(1);

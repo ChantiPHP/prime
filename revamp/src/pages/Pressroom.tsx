@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Navbar from "../components/Navbar/Navbar"; // Import Navbar
-import Footer from "@/components/Footer"; // Import Footer
+import Navbar from "@/components/layout/Navbar/Navbar"; // Import Navbar
+import Footer from "@/components/layout/Footer"; // Import Footer
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
