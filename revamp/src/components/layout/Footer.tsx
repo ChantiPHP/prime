@@ -17,21 +17,6 @@ export default function Footer() {
           transition={{ duration: 0.6 }}
           className="space-y-8 text-[20px]"
         >
-          {/* <Link
-            to="/"
-            className="focus:outline-none"
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <motion.img
-              src="/Logo/prime-logo.webp"
-              alt="PRIME Philippines logo"
-              className="w-56 h-auto object-contain hover:opacity-90 transition-opacity"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-              style={{ filter: "brightness(0) invert(1)" }}
-            />
-          </Link> */}
-
           <address className="not-italic space-y-4 leading-relaxed mt-8">
             <p className="flex items-start gap-3">
               <MapPin size={18} className="mt-0.5 flex-shrink-0" />
