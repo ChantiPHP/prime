@@ -21,7 +21,7 @@ const places = [
 const BASE_WIDTH = 500;
 const EXPANDED_SCALE = 1;
 const SHRUNK_SCALE = 0.95;
-const CARD_HEIGHT = 400;
+const CARD_HEIGHT = 300;
 const TOTAL_CARDS = places.length;
 
 export default function BusinessDistrict() {
