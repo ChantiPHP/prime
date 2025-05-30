@@ -17,7 +17,7 @@ export default function Footer() {
           transition={{ duration: 0.6 }}
           className="space-y-8 text-[20px]"
         >
-          <Link
+          {/* <Link
             to="/"
             className="focus:outline-none"
             onClick={() => window.scrollTo(0, 0)}
@@ -30,7 +30,7 @@ export default function Footer() {
               whileTap={{ scale: 0.98 }}
               style={{ filter: "brightness(0) invert(1)" }}
             />
-          </Link>
+          </Link> */}
 
           <address className="not-italic space-y-4 leading-relaxed mt-8">
             <p className="flex items-start gap-3">
@@ -65,10 +65,12 @@ export default function Footer() {
           transition={{ duration: 0.6 }}
           className="space-y-6 text-[20px]"
         >
-        <h2 className="text-[48px] gotham-bold ">
-           <span className="bg-[linear-gradient(to_bottom_right,_theme(colors.PRIMEblue)_0%,_theme(colors.PRIMEblue)_50%,_theme(colors.PRIMEred)_75%,_theme(colors.PRIMEyellow)_100%)] text-transparent bg-clip-text">
-    PRIME</span> <span className="text-PRIMEwhite">RADAR </span>
-        </h2>
+          <h2 className="text-[48px] gotham-bold ">
+            <span className="bg-[linear-gradient(to_bottom_right,_theme(colors.PRIMEblue)_0%,_theme(colors.PRIMEblue)_50%,_theme(colors.PRIMEred)_75%,_theme(colors.PRIMEyellow)_100%)] text-transparent bg-clip-text">
+              PRIME
+            </span>{" "}
+            <span className="text-PRIMEwhite">RADAR </span>
+          </h2>
           <p className="leading-relaxed max-w-md">
             Get the latest real estate insights, events and news from our
             newsletter
@@ -144,13 +146,10 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-4">
             {[
               { name: "Expertise", path: "/expertise" },
-              { name: "Events", path: "/events" },
-              { name: "Services", path: "/services" },
               { name: "Careers", path: "/careers" },
-              { name: "Properties", path: "/properties" },
-              { name: "Press Room", path: "/press" },
-              { name: "About", path: "/about" },
+              { name: "Find a Property", path: "/properties" },
               { name: "Contact", path: "/contact" },
+              { name: "About Us", path: "/about" },
             ].map((link) => (
               <Link
                 key={link.name}

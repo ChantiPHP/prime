@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 const PropertyTypes = () => {
   return (
     <div className="w-full flex justify-center py-6 mb-6">
-      <div className="max-w-5xl w-full grid grid-cols-1 md:grid-cols-3 gap-6">
-        
+      <div className="max-w-[1600px] w-full grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
         {/* Office Spaces Card */}
         <Link
           to="/OfficeSpaces"
@@ -25,7 +24,7 @@ const PropertyTypes = () => {
         >
           <div className="absolute inset-0 bg-black/60 z-0" />
           <div className="relative z-10 flex flex-col items-center space-y-1">
-            <span>RETAIL SPACES AND</span> 
+            <span>RETAIL SPACES AND</span>
             <span>COMMERCIAL LOTS</span>
           </div>
         </Link>
@@ -41,7 +40,6 @@ const PropertyTypes = () => {
             <span>WAREHOUSE</span>
           </div>
         </Link>
-
       </div>
     </div>
   );
