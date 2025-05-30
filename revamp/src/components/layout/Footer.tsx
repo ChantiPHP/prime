@@ -51,8 +51,8 @@ export default function Footer() {
           className="space-y-6 text-[20px]"
         >
         <h2 className="text-[48px] gotham-bold ">
-           <span className="bg-[linear-gradient(to_bottom_right,_theme(colors.PRIMEblue)_0%,_theme(colors.PRIMEblue)_45%,_theme(colors.PRIMEred)_70%,_theme(colors.PRIMEyellow)_100%)] text-transparent bg-clip-text">
-           PRIME</span> <span className="text-PRIMEwhite">RADAR </span>
+           <span className="bg-[linear-gradient(to_bottom_right,_theme(colors.PRIMEblue)_0%,_theme(colors.PRIMEblue)_50%,_theme(colors.PRIMEred)_75%,_theme(colors.PRIMEyellow)_100%)] text-transparent bg-clip-text">
+    PRIME</span> <span className="text-PRIMEwhite">RADAR </span>
         </h2>
           <p className="leading-relaxed max-w-md">
             Get the latest real estate insights, events and news from our
@@ -128,14 +128,11 @@ export default function Footer() {
           </h3>
           <div className="grid grid-cols-2 gap-4">
             {[
-              { name: "Expertise", path: "/expertise" },
-              { name: "Events", path: "/events" },
-              { name: "Services", path: "/services" },
+              { name: "Expertise", path: "/services" },
               { name: "Careers", path: "/careers" },
-              { name: "Properties", path: "/properties" },
-              { name: "Press Room", path: "/press" },
-              { name: "About", path: "/about" },
+              { name: "Find a Property", path: "/properties" },
               { name: "Contact", path: "/contact" },
+              { name: "About Us", path: "/about" },
             ].map((link) => (
               <Link
                 key={link.name}

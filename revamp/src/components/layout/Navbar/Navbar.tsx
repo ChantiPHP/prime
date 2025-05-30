@@ -5,21 +5,20 @@ import { AnimatePresence } from "framer-motion";
 import { NavLink, DropdownLink } from "./NavLinks";
 import { MobileMenu } from "./MobileMenu";
 
-
 const menuItems = [
-  { label: "Expertise", to: "/expertise" },
+  { label: "Expertise", to: "/services" },
   { label: "Find a Property", to: "/PropertiesPage" },
-  { 
-    label: "About Us", 
+  {
+    label: "About Us",
     subItems: [
       { label: "PRIME Leadership", to: "/about/leadership" },
       { label: "Awards and Recognition", to: "/about/awards" },
       { label: "Events", to: "/events" },
-      { label: "Pressroom", to: "/pressroom" }
-    ]
+      { label: "Pressroom", to: "/pressroom" },
+    ],
   },
   { label: "Careers", to: "/careers" },
-  { label: "Contact", to: "/contact" }
+  { label: "Contact", to: "/contact" },
 ];
 
 const Navbar = () => {
@@ -56,7 +55,10 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
         setActiveDropdown(null);
       }
     };
@@ -80,49 +82,59 @@ const Navbar = () => {
       : "bg-transparent text-white"
     : "bg-PRIMEwhite text-PRIMEblack shadow-md";
 
-  const textColorClass = isHomePage && !scrolled ? "text-white" : "text-PRIMEgray";
+  const textColorClass =
+    isHomePage && !scrolled ? "text-white" : "text-PRIMEgray";
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 font-bold ${navClasses}`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 font-bold ${navClasses}`}
+    >
       <div className="w-full flex justify-between items-center relative">
-<div className="relative">
-  {/* Real shadow matching the clip path */}
-  {(scrolled || !isHomePage) && (
-    <div
-      className="absolute left-0 top-0 h-full w-[110%] z-[-3] pointer-events-none"
-      style={{
-        backgroundColor: 'rgba(0, 0, 0, 0.25)', // shadow color
-        clipPath: 'polygon(0 0, 100% 0, 80% 100%, 0% 100%)',
-        transform: 'translateX(15px)', // offset to right
-        filter: 'blur(50px)', // soft shadow
-      }}
-    />
-  )}
+        <div className="relative">
+          {/* Real shadow matching the clip path */}
+          {(scrolled || !isHomePage) && (
+            <div
+              className="absolute left-0 top-0 h-full w-[110%] z-[-3] pointer-events-none"
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.25)", // shadow color
+                clipPath: "polygon(0 0, 100% 0, 80% 100%, 0% 100%)",
+                transform: "translateX(15px)", // offset to right
+                filter: "blur(50px)", // soft shadow
+              }}
+            />
+          )}
 
-  {/* Angled white background */}
-  <div
-    className="absolute left-0 top-0 h-full w-[110%] z-[-2] transition-all duration-300"
-    style={{
-      backgroundColor: 'white',
-      clipPath: 'polygon(0 0, 100% 0, 80% 100%, 0% 100%)',
-    }}
-  />
+          {/* Angled white background */}
+          <div
+            className="absolute left-0 top-0 h-full w-[110%] z-[-2] transition-all duration-300"
+            style={{
+              backgroundColor: "white",
+              clipPath: "polygon(0 0, 100% 0, 80% 100%, 0% 100%)",
+            }}
+          />
 
-  {/* Logo */}
-  <Link to="/" onClick={scrollToTop} className="relative p-2 pl-4 pr-4 block">
-    <img
-      src="/Logo/prime-logo.webp"
-      alt="PRIME Philippines Logo"
-      className="h-10 md:h-14 object-contain"
-    />
-  </Link>
-</div>
+          {/* Logo */}
+          <Link
+            to="/"
+            onClick={scrollToTop}
+            className="relative p-2 pl-4 pr-4 block"
+          >
+            <img
+              src="/Logo/prime-logo.webp"
+              alt="PRIME Philippines Logo"
+              className="h-10 md:h-14 object-contain"
+            />
+          </Link>
+        </div>
 
         {/* Desktop Navigation */}
         {!isMobile && (
-          <div className="flex-1 flex justify-end items-center px-6" ref={dropdownRef}>
+          <div
+            className="flex-1 flex justify-end items-center px-6"
+            ref={dropdownRef}
+          >
             <div className="flex space-x-4">
-              {menuItems.map((item, index) => (
+              {menuItems.map((item, index) =>
                 item.subItems ? (
                   <DropdownLink
                     key={index}
@@ -143,7 +155,7 @@ const Navbar = () => {
                     isContact={item.label === "Contact"}
                   />
                 )
-              ))}
+              )}
             </div>
           </div>
         )}
