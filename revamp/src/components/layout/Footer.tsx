@@ -130,7 +130,7 @@ export default function Footer() {
           </h3>
           <div className="grid grid-cols-2 gap-4">
             {[
-              { name: "Expertise", path: "/expertise" },
+              { name: "Expertise", path: "/services" },
               { name: "Careers", path: "/careers" },
               { name: "Find a Property", path: "/properties" },
               { name: "Contact", path: "/contact" },
