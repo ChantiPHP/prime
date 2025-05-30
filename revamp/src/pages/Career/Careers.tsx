@@ -11,43 +11,43 @@ const positions = [
     title: "Junior Web Developer",
     location: "Quezon City",
     type: "Full-time",
-    salary: "₱15,000 - ₱20,000",
+    experience: "1 to 3 years of experience",
   },
   {
     title: "Graphic Designer",
     location: "Makati",
     type: "Full-time",
-    salary: "₱18,000 - ₱22,000",
+    experience: "0 to 1 years of experience",
   },
   {
     title: "Marketing Associate",
     location: "Taguig",
     type: "Part-time",
-    salary: "₱12,000 - ₱18,000",
+    experience: "1 to 2 years of experience",
   },
   {
     title: "Sales Executive",
     location: "Cebu",
     type: "Full-time",
-    salary: "₱20,000 - ₱30,000",
+    experience: "3 to 5 years of experience",
   },
   {
     title: "Real Estate Analyst",
     location: "Quezon City",
     type: "Full-time",
-    salary: "₱22,000 - ₱28,000",
+    experience: "1 to 2 years of experience",
   },
   {
     title: "HR Coordinator",
     location: "Makati",
     type: "Full-time",
-    salary: "₱16,000 - ₱21,000",
+    experience: "0-1 year of experience",
   },
   {
     title: "Administrative Assistant",
     location: "Pasig",
     type: "Full-time",
-    salary: "₱14,000 - ₱19,000",
+    experience: "1 to 2 years of experience",
   },
 ];
 
@@ -124,7 +124,7 @@ export default function Careers() {
                   <Clock className="h-4 w-4 mr-1" />
                   {position.type}
                 </span>
-                <span>{position.salary}</span>
+                <span>{position.experience}</span>
               </div>
             </div>
             <div className="flex space-x-2">

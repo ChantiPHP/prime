@@ -101,7 +101,7 @@ const Team: React.FC = () => {
       {/* Main Content Wrapper */}
       <div className="max-w-[1400px] mx-auto w-full">
         {/* Founder Section */}
-        <section className="mx-auto p-8 flex flex-col lg:flex-row items-center gap-8 mb-10">
+        <section className="mx-auto p-8 flex flex-col flex-cols-2 lg:flex-row items-center gap-8 mb-10">
           <img
             src="/Leadership/SirJet.png"
             alt="Founder"
