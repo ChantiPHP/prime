@@ -52,7 +52,6 @@ const positions = [
 ];
 
 export default function Careers() {
-  
   const navigate = useNavigate();
 
   return (
@@ -62,7 +61,7 @@ export default function Careers() {
 
       {/* Banner Section */}
       <section className="relative mb-10">
-        <div className="w-full h-[500px] bg-[url('/Careers/Careers.jpeg')] bg-cover bg-center rounded-lg relative group">
+        <div className="w-full h-[400px] bg-[url('/Careers/Careers.jpeg')] bg-cover bg-center relative group">
           {/* Overlay */}
           <div className="absolute inset-0 bg-PRIMEblue/70 transition duration-300"></div>
           <motion.div
@@ -71,7 +70,7 @@ export default function Careers() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4"
           >
-            <h1 className="text-[36pt] sm:text-[48pt] font-gotham-bold uppercase">
+            <h1 className="text-[36pt] sm:text-[48pt] font-gotham-bold uppercase mt-10">
               Careers
             </h1>
             <motion.div
@@ -129,7 +128,8 @@ export default function Careers() {
               </div>
             </div>
             <div className="flex space-x-2">
-           <div className="" />   <Button
+              <div className="" />{" "}
+              <Button
                 variant="default"
                 className="p-[20px] bg-PRIMEblue text-PRIMEwhite rounded-lg hover:bg-PRIMEblue/90 transition duration-200"
                 onClick={() => navigate(`/careers/${jobPositions[index].slug}`)}

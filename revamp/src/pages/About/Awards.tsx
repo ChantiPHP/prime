@@ -75,7 +75,7 @@ const Awards: React.FC = () => {
       {/* Header Section */}
       <section className="relative">
         <div
-          className="w-full h-[500px] rounded-lg overflow-hidden relative group"
+          className="w-full h-[400px] overflow-hidden relative group"
           style={{
             backgroundImage: `url(${awardsbg})`, // Background image for the banner
             backgroundSize: "cover",
@@ -92,7 +92,7 @@ const Awards: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4"
           >
-            <h1 className="text-[36pt] sm:text-[48pt] font-bold">
+            <h1 className="text-[36pt] sm:text-[48pt] font-bold mt-10">
               AWARDS & RECOGNITION
             </h1>
             <motion.div

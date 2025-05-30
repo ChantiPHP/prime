@@ -28,7 +28,6 @@ const locations = [
 ];
 
 export default function Contact() {
-  
   const [activeLocation, setActiveLocation] = useState("Manila");
   const [isHovered, setIsHovered] = useState({
     email: false,
@@ -37,9 +36,9 @@ export default function Contact() {
   });
 
   // Scroll to the top of the page when the component is rendered
-    useEffect(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, []);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   const current = locations.find((loc) => loc.city === activeLocation);
 
@@ -50,7 +49,7 @@ export default function Contact() {
         {/* Banner Section */}
         <section className="relative mb-10">
           <div
-            className="w-full h-[500px] rounded-lg overflow-hidden relative group"
+            className="w-full h-[400px] overflow-hidden relative group"
             style={{
               backgroundImage: `url(/Contact/Contact.png)`,
               backgroundSize: "cover",
@@ -65,7 +64,9 @@ export default function Contact() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="absolute inset-0 flex flex-col items-center justify-center text-PRIMEwhite text-center px-4"
             >
-              <h1 className="text-[48pt] font-bold uppercase">Contact Us</h1>
+              <h1 className="text-[48pt] font-bold uppercase mt-10">
+                Contact Us
+              </h1>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}

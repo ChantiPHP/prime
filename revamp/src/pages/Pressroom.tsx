@@ -50,7 +50,7 @@ const NewsMediaGrid = () => {
       {/* Navbar */}
       <Navbar />
       <section className="relative mb-10">
-        <div className="w-full h-[500px] bg-[url('/Pressroom/PressroomBG.png')] bg-cover bg-center rounded-lg relative group">
+        <div className="w-full h-[400px] bg-[url('/Pressroom/PressroomBG.png')] bg-cover bg-center  relative group">
           {/* Overlay */}
           <div className="absolute inset-0 bg-PRIMEblue opacity-50"></div>{" "}
           {/* Updated to match Careers color */}
@@ -60,7 +60,7 @@ const NewsMediaGrid = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="absolute inset-0 flex flex-col items-center justify-center text-PRIMEwhite text-center px-4"
           >
-            <h1 className="text-[36pt] sm:text-[48pt] font-bold uppercase">
+            <h1 className="text-[36pt] sm:text-[48pt] font-bold uppercase mt-10">
               News & Media Apperances
             </h1>
             <motion.div

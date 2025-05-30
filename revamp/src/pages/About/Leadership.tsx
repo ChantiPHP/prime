@@ -45,9 +45,21 @@ const teamLeaders: TeamMember[] = [
 ];
 
 const marketingTeam: TeamMember[] = [
-  { name: "Name", role: "Marketing Specialist", image: "/Leadership/photo.png" },
-  { name: "Name", role: "Marketing Coordinator", image: "/Leadership/photo.png" },
-  { name: "Name", role: "Social Media Manager", image: "/Leadership/photo.png" },
+  {
+    name: "Name",
+    role: "Marketing Specialist",
+    image: "/Leadership/photo.png",
+  },
+  {
+    name: "Name",
+    role: "Marketing Coordinator",
+    image: "/Leadership/photo.png",
+  },
+  {
+    name: "Name",
+    role: "Social Media Manager",
+    image: "/Leadership/photo.png",
+  },
   { name: "Name", role: "Content Creator", image: "/Leadership/photo.png" },
   { name: "Name", role: "Digital Marketer", image: "/Leadership/photo.png" },
   { name: "Name", role: "PR Executive", image: "/Leadership/photo.png" },
@@ -60,7 +72,7 @@ const Team: React.FC = () => {
 
       {/* Banner Section */}
       <section className="relative mb-10">
-        <div className="w-full h-[500px] bg-[url('/Leadership/LeadershipBG.png')] bg-cover bg-center rounded-lg relative group">
+        <div className="w-full h-[400px] bg-[url('/Leadership/LeadershipBG.png')] bg-cover bg-center relative group">
           {/* Overlay */}
           <div className="absolute inset-0 bg-PRIMEblue/50 transition duration-300"></div>
           <motion.div
@@ -69,7 +81,7 @@ const Team: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="absolute inset-0 flex flex-col items-center justify-center text-PRIMEwhite text-center px-4"
           >
-            <h1>PRIME Foundation</h1>
+            <h1 className="mt-10">PRIME Foundation</h1>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
