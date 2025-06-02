@@ -24,7 +24,7 @@ export default function ViewProperties() {
   const [currentImage, setCurrentImage] = useState(0);
   const [isFavorite, setIsFavorite] = useState(false);
 
-    // Scroll to the top of the page when the component is rendered
+  // Scroll to the top of the page when the component is rendered
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
@@ -163,7 +163,7 @@ export default function ViewProperties() {
                 <div className="rounded-lg border overflow-hidden shadow-lg">
                   <iframe
                     className="w-full h-64 md:h-80"
-                    src={`https://maps.google.com/maps?q=${encodeURIComponent(
+                    src={`https://maps.google.com/maps?q=$${encodeURIComponent(
                       property.location
                     )}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
                     loading="lazy"

@@ -1,45 +1,40 @@
-// PropertyTypes.tsx
+// src/components/PropertyTypes.tsx
+
 import { Link } from "react-router-dom";
 
 const PropertyTypes = () => {
   return (
     <div className="w-full flex justify-center py-6 mb-6">
       <div className="max-w-[1600px] w-full grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
-        {/* Office Spaces Card */}
+
+        {/* Office Spaces */}
         <Link
-          to="/OfficeSpaces"
-          className="relative h-72 hover:underline flex flex-col justify-center items-center rounded-2xl bg-[url('/Careers/Careers.jpeg')] bg-cover bg-center text-PRIMEyellow font-semibold text-xl text-center px-6 py-10 hover:bg-[#0a294d] transition-colors overflow-hidden"
+          to="/PropertiesPage2?propertyType=Office%20Spaces"
+          className="relative h-72 flex justify-center items-center rounded-2xl bg-[url('/Careers/Careers.jpeg')] bg-cover bg-center text-PRIMEyellow text-xl font-semibold hover:bg-[#0a294d] transition overflow-hidden"
         >
           <div className="absolute inset-0 bg-black/60 z-0" />
-          <div className="relative z-10 flex flex-col items-center space-y-1">
-            <span>OFFICE</span>
-            <span>SPACES</span>
-          </div>
+          <span className="relative z-10">OFFICE SPACES</span>
         </Link>
 
-        {/* Retail & Commercial Card */}
-        <Link
-          to="/RetailSpaces-CommercialLots"
-          className="relative h-72 hover:underline flex flex-col justify-center items-center rounded-2xl bg-[url('/Careers/Careers.jpeg')] bg-cover bg-center text-PRIMEyellow font-semibold text-xl text-center px-6 py-10 hover:bg-[#0a294d] transition-colors overflow-hidden"
-        >
-          <div className="absolute inset-0 bg-black/60 z-0" />
-          <div className="relative z-10 flex flex-col items-center space-y-1">
-            <span>RETAIL SPACES AND</span>
-            <span>COMMERCIAL LOTS</span>
-          </div>
-        </Link>
+        {/* Retail */}
+      <Link
+       to="/PropertiesPage2?propertyType=Retail%20Spaces,Commercial%20Lots"
+       className="relative h-72 flex justify-center items-center rounded-2xl bg-[url('/Careers/Careers.jpeg')] bg-cover bg-center text-PRIMEyellow text-xl font-semibold hover:bg-[#0a294d] transition overflow-hidden"
+>
+       <div className="absolute inset-0 bg-black/60 z-0" />
+       <span className="relative z-10 text-center">RETAIL SPACES & COMMERCIAL LOTS</span>
+      </Link>
 
-        {/* Industrial & Warehouse Card */}
-        <Link
-          to="/IndustrialLots-Warehouse"
-          className="relative h-72 hover:underline flex flex-col justify-center items-center rounded-2xl bg-[url('/Careers/Careers.jpeg')] bg-cover bg-center text-PRIMEyellow font-semibold text-xl text-center px-6 py-10 hover:bg-[#0a294d] transition-colors overflow-hidden"
-        >
-          <div className="absolute inset-0 bg-black/60 z-0" />
-          <div className="relative z-10 flex flex-col items-center space-y-1">
-            <span>INDUSTRIAL LOT AND</span>
-            <span>WAREHOUSE</span>
-          </div>
-        </Link>
+    {/* Industrial */}
+      <Link
+      to="/PropertiesPage2?propertyType=Industrial%20Lots,Industrial%20Warehouse"
+      className="relative h-72 flex justify-center items-center rounded-2xl bg-[url('/Careers/Careers.jpeg')] bg-cover bg-center text-PRIMEyellow text-xl font-semibold hover:bg-[#0a294d] transition overflow-hidden"
+>
+      <div className="absolute inset-0 bg-black/60 z-0" />
+      <span className="relative z-10 text-center">INDUSTRIAL LOT & WAREHOUSE</span>
+     </Link>
+
+
       </div>
     </div>
   );

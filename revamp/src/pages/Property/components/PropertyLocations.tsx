@@ -112,8 +112,10 @@ export default function PropertyLocations() {
 
   function onCardClick(idx: number) {
     if (Math.abs(dragCurrX.current - dragStartX.current) > clickThreshold) return;
+
     if (expanded === idx) {
-      navigate(`/BusinessDistrictView?district=${places[idx].name}`);
+      // ✅ Navigate to PropertiesPage2 with query param
+      navigate(`/PropertiesPage2?location=${encodeURIComponent(places[idx].name)}`);
     } else {
       setExpanded(idx);
       setIsPaused(true);

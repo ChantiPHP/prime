@@ -14,29 +14,17 @@ const ServicesPage = () => {
     { id: 3, name: "Research & Advisory" },
     { id: 4, name: "Property Acquisition & Disposal" },
     { id: 5, name: "Project Management" },
-    { id: 6, name: "Design and Construction" },
+    { id: 6, name: "Project Management" },
   ];
 
   const contentParagraph = (
     <>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus
-        ex sapien vitae pellentesque sem placerat. In id cursus mi pretium
-        tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-        Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis
-        massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper
-        vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra
-        inceptos himenaeos.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
       </p>
       <br />
       <p>
-        Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus
-        ex sapien vitae pellentesque sem placerat. In id cursus mi pretium
-        tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-        Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis
-        massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper
-        vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra
-        inceptos himenaeos.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
       </p>
     </>
   );
@@ -57,7 +45,7 @@ const ServicesPage = () => {
       {/* Banner */}
       <section className="relative mb-10">
         <div
-          className="w-full h-[400px] relative overflow-hidden"
+          className="w-full h-[500px] relative overflow-hidden"
           style={{
             backgroundImage: "url(/Services/ServicesBG.png)",
             backgroundSize: "cover",
@@ -71,20 +59,16 @@ const ServicesPage = () => {
             transition={{ duration: 0.8 }}
             className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4"
           >
-            <h1 className="text-[36pt] sm:text-[48pt] font-bold uppercase mt-10">
-              Expertise
-            </h1>
+            <h1 className="text-[36pt] sm:text-[48pt] font-bold uppercase">Services</h1>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               className="inline-flex items-center px-[40px] py-[12px] border-2 border-white rounded-full text-lg font-semibold mt-4"
             >
-              <Link to="/" className="hover:underline">
-                Home
-              </Link>
+              <Link to="/" className="hover:underline">Home</Link>
               <span className="mx-2">/</span>
-              <span>Expertise</span>
+              <span>Services</span>
             </motion.div>
           </motion.div>
         </div>
@@ -93,6 +77,7 @@ const ServicesPage = () => {
       {/* Main Section */}
       <section className="px-6 lg:px-12 py-16 max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
           {/* Sidebar */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -100,9 +85,7 @@ const ServicesPage = () => {
             transition={{ duration: 0.6 }}
             className="bg-PRIMEwhite rounded-lg border border-PRIMElightgray shadow-lg p-6 max-h-[600px] overflow-y-auto"
           >
-            <h2 className="text-2xl font-bold text-PRIMEblue mb-2">
-              Expertise
-            </h2>
+            <h2 className="text-2xl font-bold text-PRIMEblue mb-2">Services</h2>
             <div className="h-1 w-24 bg-gradient-to-r from-PRIMEyellow via-PRIMEred to-PRIMEblue rounded-full mb-6" />
             <div className="space-y-3">
               {serviceList.map((service) => (
@@ -162,19 +145,13 @@ const ServicesPage = () => {
             <div className="text-sm space-y-2 text-center">
               <p>
                 <strong>Phone:</strong>{" "}
-                <a
-                  href="tel:+63288881000"
-                  className="text-blue-100 hover:underline"
-                >
+                <a href="tel:+63288881000" className="text-blue-100 hover:underline">
                   +63 2 8888 1000
                 </a>
               </p>
               <p>
                 <strong>Mobile:</strong>{" "}
-                <a
-                  href="tel:+639171234567"
-                  className="text-blue-100 hover:underline"
-                >
+                <a href="tel:+639171234567" className="text-blue-100 hover:underline">
                   +63 917 123 4567
                 </a>
               </p>

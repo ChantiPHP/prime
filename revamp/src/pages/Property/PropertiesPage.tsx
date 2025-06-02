@@ -10,6 +10,7 @@ import PropertyLocations from "./components/PropertyLocations";
 export default function FindProperty() {
   // Local state to manage search input and selected city
   // These states will be updated based on user input
+  
   const [searchTerm, setSearchTerm] = useState("");
   // Dropdown for selecting a location (city)
   // This will be used to filter properties based on the selected city

@@ -1,9 +1,9 @@
 // src/pages/Property/data/propertiesData.ts
 
 export const cities: string[] = [
-  "Quezon City", "San Juan City", "Pasig City", "Makati City", "Valenzuela City",
-  "Pasay City", "Marikina City", "Caloocan City", "Paranaque City", "Navotas City",
-  "Las Pinas City", "Taguig City", "Mandaluyong City"
+  "Makati CBD", "BGC", "Ortigas", "Pasay", "Alabang",
+  "Cebu", "Quezon City", "Davao", "Clark", "Navotas City",
+  "Las Pinas City", "Taguig City", "Mandaluyong City", "Iloilo", "CDO",
 ];
 
 export type PropertyType =
