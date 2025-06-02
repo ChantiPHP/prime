@@ -16,23 +16,23 @@ const PropertyTypes = () => {
           <span className="relative z-10">OFFICE SPACES</span>
         </Link>
 
-        {/* Retail */}
-      <Link
-       to="/PropertiesPage2?propertyType=Retail%20Spaces,Commercial%20Lots"
-       className="relative h-72 flex justify-center items-center rounded-2xl bg-[url('/Careers/Careers.jpeg')] bg-cover bg-center text-PRIMEyellow text-xl font-semibold hover:bg-[#0a294d] transition overflow-hidden"
+       {/* Retail */}
+<Link
+  to="/PropertiesPage2?propertyType=Retail%20Spaces,Commercial%20Lots"
+  className="relative h-72 flex justify-center items-center rounded-2xl bg-[url('/Careers/Careers.jpeg')] bg-cover bg-center text-PRIMEyellow text-xl font-semibold hover:bg-[#0a294d] transition overflow-hidden"
 >
-       <div className="absolute inset-0 bg-black/60 z-0" />
-       <span className="relative z-10 text-center">RETAIL SPACES & COMMERCIAL LOTS</span>
-      </Link>
+  <div className="absolute inset-0 bg-black/60 z-0" />
+  <span className="relative z-10 text-center">RETAIL SPACES & COMMERCIAL LOTS</span>
+</Link>
 
-    {/* Industrial */}
-      <Link
-      to="/PropertiesPage2?propertyType=Industrial%20Lots,Industrial%20Warehouse"
-      className="relative h-72 flex justify-center items-center rounded-2xl bg-[url('/Careers/Careers.jpeg')] bg-cover bg-center text-PRIMEyellow text-xl font-semibold hover:bg-[#0a294d] transition overflow-hidden"
+{/* Industrial */}
+<Link
+  to="/PropertiesPage2?propertyType=Industrial%20Lots,Industrial%20Warehouse"
+  className="relative h-72 flex justify-center items-center rounded-2xl bg-[url('/Careers/Careers.jpeg')] bg-cover bg-center text-PRIMEyellow text-xl font-semibold hover:bg-[#0a294d] transition overflow-hidden"
 >
-      <div className="absolute inset-0 bg-black/60 z-0" />
-      <span className="relative z-10 text-center">INDUSTRIAL LOT & WAREHOUSE</span>
-     </Link>
+  <div className="absolute inset-0 bg-black/60 z-0" />
+  <span className="relative z-10 text-center">INDUSTRIAL LOT & WAREHOUSE</span>
+</Link>
 
 
       </div>

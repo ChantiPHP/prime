@@ -1,10 +1,16 @@
 import { useState, useEffect } from "react";
 import Navbar from "@/components/layout/Navbar/Navbar";
 import Footer from "@/components/layout/Footer";
-import { cities, properties } from "./data/propertiesData";
+import { properties } from "./data/propertiesData";
 import { TopFilter, Filters } from "./components/filters";
 import { useLocation } from "react-router-dom";
 import PropertyList from "./components/PropertyList";
+
+// ✅ Replace cities with allowed places
+const allowedPlaces = [
+  "Makati CBD", "BGC", "Ortigas", "Pasay", "Quezon City", "Alabang",
+  "Cebu", "Davao", "Clark", "Iloilo", "CDO", "Bacolod"
+];
 
 export default function PropertiesPage2() {
   const location = useLocation();
@@ -26,34 +32,27 @@ export default function PropertiesPage2() {
     "Industrial Warehouse",
   ];
 
-  // Initialize search term, location, property type, and selected location from URL query parameters
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const search = params.get("search") ?? "";
-    const loc = params.get("location") ?? "";
-    const propType = params.get("propertyType") ?? "";
+    const locParam = params.get("location") ?? "";
+    const propTypeParam = params.get("propertyType") ?? "";
 
     setSearchTerm(search);
-    setLocationDropdown(loc);
+    setLocationDropdown(locParam);
 
-    // If propertyType is present in the URL, pre-select it
-    if (propType && !selectedPropertyTypes.includes(propType)) {
-      setSelectedPropertyTypes([propType]);
-    } else if (!propType) {
-      // Clear property type if not in URL, useful if navigating from specific type to general search
-      setSelectedPropertyTypes([]);
-    }
+    const propertyTypesFromURL = propTypeParam
+      ? decodeURIComponent(propTypeParam).split(",").map((t) => t.trim())
+      : [];
+    setSelectedPropertyTypes(propertyTypesFromURL);
 
-    // If location is present in the URL, pre-select it for multi-select
-    if (loc && !selectedLocations.includes(loc)) {
-      setSelectedLocations([loc]);
-    } else if (!loc) {
-      // Clear selected locations if not in URL
-      setSelectedLocations([]);
-    }
+    const locationsFromURL = locParam
+      ? decodeURIComponent(locParam).split(",").map((l) => l.trim()).filter((loc) => allowedPlaces.includes(loc))
+      : [];
+    setSelectedLocations(locationsFromURL);
 
-    setCurrentPage(1); // Reset page on new navigation or filter changes
-  }, [location.search]); // Depend on location.search to re-run when URL changes
+    setCurrentPage(1);
+  }, [location.search]);
 
   const toggle = (arr: string[], setFn: (v: string[]) => void, value: string) => {
     if (arr.includes(value)) {
@@ -118,10 +117,8 @@ export default function PropertiesPage2() {
             setSearchTerm={setSearchTerm}
             locationDropdown={locationDropdown}
             setLocationDropdown={setLocationDropdown}
-            cities={cities}
+            cities={allowedPlaces} // ✅ use allowed locations only
             onSearch={() => {
-              // Only reset page if search term changes or new location is selected via dropdown
-              // This prevents resetting when navigating via property type/location links
               const currentParams = new URLSearchParams(location.search);
               const currentSearch = currentParams.get("search") ?? "";
               const currentLocation = currentParams.get("location") ?? "";
@@ -138,14 +135,12 @@ export default function PropertiesPage2() {
         <Filters
           leaseTypes={leaseTypes}
           propertyTypes={propertyTypes}
-          locations={cities}
+          locations={allowedPlaces} // ✅ filter options here too
           selectedLeaseTypes={selectedLeaseTypes}
           selectedPropertyTypes={selectedPropertyTypes}
           selectedLocations={selectedLocations}
           onLeaseTypeChange={(type) => toggle(selectedLeaseTypes, setSelectedLeaseTypes, type)}
-          onPropertyTypeChange={(ptype) =>
-            toggle(selectedPropertyTypes, setSelectedPropertyTypes, ptype)
-          }
+          onPropertyTypeChange={(ptype) => toggle(selectedPropertyTypes, setSelectedPropertyTypes, ptype)}
           onLocationChange={(loc) => toggle(selectedLocations, setSelectedLocations, loc)}
         />
 
