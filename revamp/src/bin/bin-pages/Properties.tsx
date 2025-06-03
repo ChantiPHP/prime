@@ -1,5 +1,6 @@
 // pages/properties.tsx
 import { useState, useEffect } from "react";
+<<<<<<< HEAD:revamp/src/bin/bin-pages/Properties.tsx
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -13,20 +14,24 @@ import {
   categories,
   Property,
 } from "@/bin/data/propertyData";
+=======
+import { Link } from "react-router-dom";
+import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer";
+import BusDisProperties from "@/components/Properties/BusDisProperties";
+import { TopFilter } from "@/components/filters";
+import { cities } from "@/data/propertiesData";
+>>>>>>> c22200cc56dfdc2eb5e56e9d470d3e38ddc4477b:revamp/src/pages/Property/Properties.tsx
 
-const ITEMS_PER_PAGE = 3;
-// Helper to get query params
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
 export default function PropertiesPage() {
-  const query = useQuery();
-  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [locationDropdown, setLocationDropdown] = useState("");
 
-      // Scroll to the top of the page when the component is rendered
+  // Scroll to the top of the page when the component is rendered
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
+<<<<<<< HEAD:revamp/src/bin/bin-pages/Properties.tsx
   
     // Read category from URL query param
   const urlCategory = query.get("category") || "All Categories";
@@ -197,6 +202,11 @@ export default function PropertiesPage() {
 
   function handleAddProperty(): void {
     // Implement as needed
+=======
+
+  function setCurrentPage(_arg0: number) {
+    throw new Error("Function not implemented.");
+>>>>>>> c22200cc56dfdc2eb5e56e9d470d3e38ddc4477b:revamp/src/pages/Property/Properties.tsx
   }
 
   return (
@@ -204,166 +214,72 @@ export default function PropertiesPage() {
       <Navbar />
 
       {/* Banner Section */}
-      <section className="relative mb-10">
-        <div className="w-full h-[500px] bg-[url('/Property/Properties.png')] bg-cover bg-center rounded-lg relative group">
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-PRIMEblue opacity-50"></div>{" "}
-          {/* Updated to match Careers color */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="absolute inset-0 flex flex-col items-center justify-center text-PRIMEwhite text-center px-4"
-          >
-            <h1 className="text-[36pt] sm:text-[48pt] font-bold uppercase">
-              Properties
-            </h1>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              className="inline-flex items-center px-6 py-3 border-2 border-PRIMEwhite rounded-full text-lg font-semibold mt-4"
-            >
-              <Link to="/" className="hover:underline">
-                Home
-              </Link>
-              <span className="mx-2">/</span>
-              <span className="font-semibold">Properties</span>
-            </motion.div>
-          </motion.div>
+      {/* Header Image and TopFilter */}
+      <div className="w-full h-36 sm:h-40 md:h-48 lg:h-56 xl:h-64 relative overflow-visible">
+        <img
+          src="HomeBanner.jpg"
+          alt="Modern glass buildings with gradient overlay"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 flex items-center justify-center bg-opacity-30">
+          <TopFilter
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            locationDropdown={locationDropdown}
+            setLocationDropdown={setLocationDropdown}
+            cities={cities}
+            onSearch={() => {
+              setCurrentPage(1); // Reset page on search if needed
+            }}
+          />
         </div>
-      </section>
+      </div>
 
-      {/* Filter Component */}
-      <Filters
-        filters={filters}
-        onFilterChange={handleFilterChange}
-        onAdd={handleAddProperty} onDebouncedSearchChange={function (_value: string): void {
-          throw new Error("Function not implemented.");
-        } }      />
+      {/* Business District section */}
+      <BusDisProperties />
 
-      {/* Category Sections */}
-      <main className="max-w-6xl mx-auto py-12 px-4 space-y-16">
-        {visibleCategories.map((category, index) => {
-          const filtered = getFilteredProperties(category);
-          const page = currentPages[index];
-          const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
-          const current = filtered.slice(
-            page * ITEMS_PER_PAGE,
-            page * ITEMS_PER_PAGE + ITEMS_PER_PAGE
-          );
+      {/* Cards/Buttons for different property offers */}
+      <div className="flex w-full justify-center mb-[100px]">
+        <div className="max-w-[1600px] flex md:flex-col lg:flex-row gap-3 uppercase text-xsubtitle text-center text-PRIMEwhite font-semibold">
+          <Link
+            to="/"
+            className="relative flex flex-col justify-center items-center rounded-md bg-[url('Property/OfficeSpaces.png')] bg-cover text-PRIMEwhite text-xsubtitle font-semibold hover:underline text-center p-6 transition-colors overflow-hidden w-[530px] h-[300px]"
+          >
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-PRIMEblue/60 z-0" />
+            {/* Content */}
+            <div className="relative z-10 flex flex-col items-center">
+              Office <br /> spaces
+            </div>
+          </Link>
 
-          const categoryName =
-            typeof category.name === "function"
-              ? category.name(
-                  filters.location === "All Locations"
-                    ? "Quezon City"
-                    : filters.location
-                )
-              : category.name;
+          <Link
+            to="/projects"
+            className="relative flex flex-col justify-center items-center rounded-md bg-[url('Property/OfficeSpaces.png')] bg-cover text-PRIMEwhite text-xsubtitle font-semibold hover:underline text-center p-6 transition-colors overflow-hidden w-[530px] h-[300px]"
+          >
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-PRIMEblue/60 z-0" />
+            {/* Content */}
+            <div className="relative z-10 flex flex-col items-center">
+              retail spaces & <br />
+              commercial lots
+            </div>
+          </Link>
 
-          return (
-            <section key={index} className="space-y-6">
-              <div className="text-center">
-                <h2 className="text-2xl font-semibold text-PRIMEblack mb-2">
-                  {categoryName}
-                </h2>
-                <p className="text-sm text-PRIMEgray">{category.description}</p>
-              </div>
-
-              {filtered.length > 0 ? (
-                <>
-                  <div className="relative flex items-center">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => {
-                      if (page > 0) {
-                        handlePrev(index);
-                      }
-                    }}
-                    className={`absolute left-[-60px] z-10 transition-opacity
-                      ${page === 0 ? "opacity-50 pointer-events-none cursor-default" : ""}
-                    `}
-                  >
-                    <ChevronLeft />
-                  </Button>
-
-
-                    {/* Property Cards */}
-                    <div className="w-full overflow-visible ">
-                      <div className="flex-wrap gap-6 transition-all">
-                        <AnimatePresence mode="wait">
-                          <motion.div
-                            key={`${index}-${page}`}
-                            initial={{
-                              x: slideDirection === "left" ? 300 : -300,
-                              opacity: 0.1,
-                            }}
-                            animate={{ x: 0, opacity: 1 }}
-                            exit={{
-                              x: slideDirection === "left" ? -300 : 300,
-                              opacity: 0.1,
-                            }}
-                            transition={{ duration: 0.6, ease: "easeInOut" }}
-                            className={`flex flex-wrap gap-6 ${
-                              current.length < 3 ? "justify-start" : "justify-center"
-                            }`}
-                          >
-                            {current.map((prop) => (
-                              <PropertyCard key={prop.id} property={prop} />
-                            ))}
-                          </motion.div>
-                        </AnimatePresence>
-                      </div>
-                    </div>
-
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => {
-                        if (page < totalPages - 1) {
-                          handleNext(index);
-                        }
-                      }}
-                      className={`absolute right-[-60px] z-10 transition-opacity
-                        ${page >= totalPages - 1 ? "opacity-50 pointer-events-none cursor-default" : ""}
-                      `}
-                    >
-                      <ChevronRight />
-                    </Button>
-
-                  </div>
-
-                  {/* Paginataion Dots */}
-                  {totalPages > 1 && (
-                    <div className="flex justify-center mt-4">
-                      <div className="flex gap-2 px-4 py-3 bg-PRIMElightgray rounded-full shadow-sm">
-                        {Array.from({ length: totalPages }).map(
-                          (_, dotIndex) => (
-                            <div
-                              key={dotIndex}
-                              className={`w-2 h-2 rounded-full ${
-                                dotIndex === page
-                                  ? "bg-PRIMEblue"
-                                  : "bg-PRIMEgray"
-                              }`}
-                            />
-                          )
-                        )}
-                      </div>
-                    </div>
-                  )}
-                </>
-              ) : (
-                <p className="text-center text-PRIMEgray">
-                  No properties found in this category.
-                </p>
-              )}
-            </section>
-          );
-        })}
-      </main>
+          <Link
+            to="/projects"
+            className="relative flex flex-col justify-center items-center rounded-md bg-[url('Property/OfficeSpaces.png')] bg-cover text-PRIMEwhite text-xsubtitle font-semibold hover:underline text-center p-6 transition-colors overflow-hidden w-[530px] h-[300px]"
+          >
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-PRIMEblue/60 z-0" />
+            {/* Content */}
+            <div className="relative z-10 flex flex-col items-center">
+              industrial lots
+              <br />& warehouses
+            </div>
+          </Link>
+        </div>
+      </div>
 
       <Footer />
     </div>
