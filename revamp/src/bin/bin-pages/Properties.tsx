@@ -1,28 +1,24 @@
 // pages/properties.tsx
 import { useState, useEffect } from "react";
-<<<<<<< HEAD:revamp/src/bin/bin-pages/Properties.tsx
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Navbar from "@/components/layout/Navbar/Navbar";
-import Footer from "@/components/layout/Footer";
-import Filters from "@/bin/bin-components/Properties/Filters";
-import PropertyCard from "@/bin/bin-components/Properties/PropertyCard";
-import { Button } from "@/bin/bin-components/Properties/button";
+import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer";
+import Filters from "@/components/Properties/Filters";
+import PropertyCard from "@/components/Properties/PropertyCard";
+import { Button } from "@/components/Properties/button";
 import {
   properties as initialProperties,
   categories,
   Property,
-} from "@/bin/data/propertyData";
-=======
-import { Link } from "react-router-dom";
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer";
-import BusDisProperties from "@/components/Properties/BusDisProperties";
-import { TopFilter } from "@/components/filters";
-import { cities } from "@/data/propertiesData";
->>>>>>> c22200cc56dfdc2eb5e56e9d470d3e38ddc4477b:revamp/src/pages/Property/Properties.tsx
+} from "@/data/propertyData";
 
+const ITEMS_PER_PAGE = 3;
+// Helper to get query params
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 export default function PropertiesPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [locationDropdown, setLocationDropdown] = useState("");
@@ -31,7 +27,7 @@ export default function PropertiesPage() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
-<<<<<<< HEAD:revamp/src/bin/bin-pages/Properties.tsx
+
   
     // Read category from URL query param
   const urlCategory = query.get("category") || "All Categories";
@@ -202,11 +198,6 @@ export default function PropertiesPage() {
 
   function handleAddProperty(): void {
     // Implement as needed
-=======
-
-  function setCurrentPage(_arg0: number) {
-    throw new Error("Function not implemented.");
->>>>>>> c22200cc56dfdc2eb5e56e9d470d3e38ddc4477b:revamp/src/pages/Property/Properties.tsx
   }
 
   return (
