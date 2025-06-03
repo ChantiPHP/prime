@@ -112,7 +112,7 @@ export default function PropertiesPage2() {
   );
 
   // Page navigation
-  
+  // This function changes the current page if the requested page is valid
   const goToPage = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);

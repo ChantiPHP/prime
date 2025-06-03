@@ -140,7 +140,7 @@ export default function PropertyLocations() {
     <section className="relative bg-gray-100 py-12 select-none max-w-full overflow-hidden mx-auto mt-[50px] sm:mt-[60px] md:mt-[70px] lg:mt-[80px] mb-[50px]">
       <div className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12">
         <h2 className="text-4xl font-bold inline-block">
-          <span className="text-PRIMEyellow bg-PRIMEblue px-4 py-4 rounded-sm">
+          <span className="text-PRIMEblue px-4 py-4 rounded-sm">
             <span className="text-maintitle">PROPERTY</span>
             <span className="ml-2 text-maintitle">LOCATIONS</span>
           </span>
@@ -149,12 +149,12 @@ export default function PropertyLocations() {
 
       {/* Arrows */}
       <div className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10 md:z-30">
-        <Button size="icon" onClick={prev} className="rounded-full bg-PRIMEwhite shadow-lg border border-PRIMEgray text-PRIMEblue hover:bg-PRIMEblue hover:text-PRIMEwhite h-10 w-10">
+        <Button size="icon" onClick={prev} className="rounded-full bg-PRIMEwhite shadow-lg border border-PRIMEgray text-PRIMEblue hover:bg-PRIMEblue hover:text-PRIMEwhite  active:bg-PRIMEgray active:text-PRIMEwhite h-10 w-10">
           <ChevronLeft className="h-5 w-5" />
         </Button>
       </div>
       <div className="absolute top-1/2 right-4 transform -translate-y-1/2 z-10 md:z-30">
-        <Button size="icon" onClick={next} className="rounded-full bg-PRIMEwhite shadow-lg border border-PRIMEgray text-PRIMEblue hover:bg-PRIMEblue hover:text-PRIMEwhite h-10 w-10">
+        <Button size="icon" onClick={next} className="rounded-full bg-PRIMEwhite shadow-lg border border-PRIMEgray text-PRIMEblue hover:bg-PRIMEblue hover:text-PRIMEwhite  active:bg-PRIMEgray active:text-PRIMEwhite h-10 w-10">
           <ChevronRight className="h-5 w-5" />
         </Button>
       </div>

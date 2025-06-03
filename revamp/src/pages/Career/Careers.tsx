@@ -52,7 +52,6 @@ const positions = [
 ];
 
 export default function Careers() {
-  
   const navigate = useNavigate();
 
   return (
@@ -62,7 +61,7 @@ export default function Careers() {
 
       {/* Banner Section */}
       <section className="relative mb-10">
-        <div className="w-full h-[500px] bg-[url('/Careers/Careers.jpeg')] bg-cover bg-center rounded-lg relative group">
+        <div className="w-full h-[500px] bg-[url('/CareersBanner.jpg')] bg-cover bg-center rounded-lg relative group">
           {/* Overlay */}
           <div className="absolute inset-0 bg-PRIMEblue/70 transition duration-300"></div>
           <motion.div
@@ -108,8 +107,11 @@ export default function Careers() {
       {/* Positions List */}
       <section className="max-w-6xl mx-auto px-4 pb-16 space-y-4">
         {positions.map((position, index) => (
-          <div
+          <motion.div
             key={index}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.1 }}
             className="flex justify-between items-center rounded-xl shadow-xl px-[60px] py-[35px]"
           >
             <div>
@@ -129,7 +131,7 @@ export default function Careers() {
               </div>
             </div>
             <div className="flex space-x-2">
-           <div className="" />   <Button
+              <Button
                 variant="default"
                 className="p-[20px] bg-PRIMEblue text-PRIMEwhite rounded-lg hover:bg-PRIMEblue/90 transition duration-200"
                 onClick={() => navigate(`/careers/${jobPositions[index].slug}`)}
@@ -137,7 +139,7 @@ export default function Careers() {
                 View Position
               </Button>
             </div>
-          </div>
+          </motion.div>
         ))}
       </section>
       {/* Footer */}

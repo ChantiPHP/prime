@@ -52,7 +52,7 @@ export default function Contact() {
           <div
             className="w-full h-[500px] rounded-lg overflow-hidden relative group"
             style={{
-              backgroundImage: `url(/Contact/Contact.png)`,
+              backgroundImage: `url(/HomeBanner.jpg)`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}

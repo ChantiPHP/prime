@@ -7,7 +7,12 @@ import { MobileMenu } from "./MobileMenu";
 
 
 const menuItems = [
+<<<<<<< Updated upstream
   { label: "Expertise", to: "/expertise" },
+=======
+{ label: "Expertise", to: "/expertise" }
+,
+>>>>>>> Stashed changes
   { label: "Find a Property", to: "/PropertiesPage" },
   { 
     label: "About Us", 
