@@ -23,7 +23,7 @@ export const TopFilter: React.FC<TopFilterProps> = ({
 <form
   aria-label="Property search form"
   className="absolute left-1/2 -translate-x-1/2 bottom-[-6.5rem] sm:bottom-[-8rem] md:bottom-[-2.5rem] lg:bottom-[-3rem]
-             w-full max-w-4xl px-4 sm:px-6 bg-PRIMEwhite shadow-md rounded-md
+             w-full max-w-4xl px-4 sm:px-6 bg-white shadow-md rounded-md
              flex flex-col sm:flex-row items-center gap-4 p-4 sm:p-6 z-10"
   onSubmit={(e) => {
     e.preventDefault();
@@ -35,13 +35,13 @@ export const TopFilter: React.FC<TopFilterProps> = ({
     placeholder="Keyword"
     value={searchTerm}
     onChange={(e) => setSearchTerm(e.target.value)}
-    className="flex-1 border border-PRIMElightgray rounded-md py-2 px-3 w-full text-subcontent text-PRIMEgray placeholder-PRIMElightgray focus:outline-none focus:ring-2 focus:ring-PRIMEblue"
+    className="flex-1 border border-gray-300 rounded-md py-2 px-3 w-full text-sm text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-PRIMEblue"
   />
   <select
     aria-label="Select location"
     value={locationDropdown}
     onChange={(e) => setLocationDropdown(e.target.value)}
-    className="flex-1 border border-PRIMElightgray rounded-md py-2 px-3 w-full text-subcontent text-PRIMEgray focus:outline-none focus:ring-2 focus:ring-PRIMEblue"
+    className="flex-1 border border-gray-300 rounded-md py-2 px-3 w-full text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-PRIMEblue"
   >
     <option value="">Location</option>
     {cities.map((city) => (
@@ -52,7 +52,7 @@ export const TopFilter: React.FC<TopFilterProps> = ({
   </select>
       <button
     type="submit"
-    className="flex-1 sm:flex-none w-full sm:w-auto bg-PRIMEblue text-PRIMEwhite text-subcontent font-semibold py-2 px-5 rounded-md hover:bg-PRIMEblue/90 transition"
+    className="flex-1 sm:flex-none w-full sm:w-auto bg-PRIMEblue text-PRIMEwhite text-sm font-semibold py-2 px-5 rounded-md hover:bg-PRIMEblue/90 transition"
   >
     Search Properties
   </button>
