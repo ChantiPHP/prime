@@ -6,7 +6,7 @@ import { NavLink, DropdownLink } from "./NavLinks";
 import { MobileMenu } from "./MobileMenu";
 
 const menuItems = [
-  { label: "Expertise", to: "/services" },
+  { label: "Expertise", to: "/expertise" },
   { label: "Find a Property", to: "/PropertiesPage" },
   {
     label: "About Us",
