@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Navbar from "@/components/layout/Navbar/Navbar"; // Import Navbar
-import Footer from "@/components/layout/Footer"; // Import Footer
+import Navbar from "@/components/layout/Navbar/Navbar";
+import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Link } from "react-router-dom"; // Import Link for navigation
+import { Link } from "react-router-dom";
 
 const items = Array.from({ length: 20 }, (_, i) => ({
   id: i,
@@ -22,38 +22,25 @@ const itemsPerPage = 6;
 const NewsMediaGrid = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Calculate the index of the first and last item for the current page
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-
-  // Slice the items array to show only the items for the current page
   const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
-
-  // Calculate total pages
   const totalPages = Math.ceil(items.length / itemsPerPage);
 
-  // Handle next and previous page buttons
   const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
 
   const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
 
   return (
     <div className="flex flex-col">
-      {/* Navbar */}
       <Navbar />
       <section className="relative mb-10">
-        <div className="w-full h-[400px] bg-[url('/Pressroom/PressroomBG.png')] bg-cover bg-center  relative group">
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-PRIMEblue opacity-50"></div>{" "}
-          {/* Updated to match Careers color */}
+        <div className="w-full h-[400px] bg-[url('/Pressroom/PressroomBG.png')] bg-cover bg-center relative group">
+          <div className="absolute inset-0 bg-PRIMEblue opacity-50"></div>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -61,7 +48,7 @@ const NewsMediaGrid = () => {
             className="absolute inset-0 flex flex-col items-center justify-center text-PRIMEwhite text-center px-4"
           >
             <h1 className="text-[36pt] sm:text-[48pt] font-bold uppercase mt-10">
-              News & Media Apperances
+              News & Media Appearances
             </h1>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -80,7 +67,6 @@ const NewsMediaGrid = () => {
       </section>
 
       <div className="max-w-[1400px] flex flex-col px-15 mx-auto">
-        {/* Pagination */}
         <div className="flex justify-end items-center gap-4 mt-8">
           <Button
             variant="outline"
@@ -103,12 +89,15 @@ const NewsMediaGrid = () => {
           </Button>
         </div>
 
-        {/* News Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 my-8">
           {currentItems.map((item) => (
             <Link
               key={item.id}
-              to={`/news/${item.id}`}
+              to={
+                item.type === "NEWS"
+                  ? `/pressroom/NewsArticle/${item.id}`
+                  : `/pressroom/VideoArticle/${item.id}`
+              }
               className="bg-white rounded-lg shadow-md hover:shadow-2xl transition-all duration-300 transform hover:scale-101 w-[400px] h-[430px]"
             >
               <div className="relative h-[320px]">
@@ -126,21 +115,15 @@ const NewsMediaGrid = () => {
                   {item.title}
                 </h3>
                 <p className="text-sm text-PRIMEgray">{item.date}</p>
-                <Link
-                  key={item.id}
-                  to={`/news/${item.id}`}
-                  className="text-center text-sm text-PRIMEgray underline"
-                >
-                  {" "}
+                <p className="text-center text-sm text-PRIMEgray underline mt-2">
                   View Details
-                </Link>
+                </p>
               </div>
             </Link>
           ))}
         </div>
       </div>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

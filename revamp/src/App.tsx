@@ -12,6 +12,8 @@ import PropertiesPage2 from "@/pages/Property/PropertiesPage2";
 import ViewProperties from "@/pages/Property/View-Properties";
 import Events  from "@/pages/Event/Events";
 import Pressroom from "@/pages/Pressroom";
+import NewsArticle from "@/pages/Pressroom/NewsArticle";
+import VideoArticle from "@/pages/Pressroom/VideoArticle";
 
 
 
@@ -29,9 +31,14 @@ function App() {
         <Route path="/about/leadership" element={<Leadership />} />
         <Route path="/propertiesPage" element={<PropertiesPage />} />
         <Route path="/view-properties/:id" element={<ViewProperties />} />
-        <Route path="/PropertiesPage2" element={<PropertiesPage2 />} />
+        <Route path="/PropertiesPage2" element={<PropertiesPage2 />}
+        
+         />
         <Route path="/events" element={<Events />} />
         <Route path="/pressroom" element={<Pressroom />} /> 
+        <Route path="/pressroom/NewsArticle/:id" element={<NewsArticle />} />
+        <Route path="/pressroom/VideoArticle/:id" element={<VideoArticle />} />
+        
       </Routes>
     </Router>
   );

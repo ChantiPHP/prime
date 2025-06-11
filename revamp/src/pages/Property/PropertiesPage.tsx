@@ -18,6 +18,7 @@ export default function FindProperty() {
 
   // Hook for programmatic navigation
   // This allows us to redirect to another page with query parameters
+  
   const navigate = useNavigate();
 
   // Handler function triggered on search button click
