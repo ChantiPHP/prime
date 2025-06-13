@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate, Link } from "react-router-dom";
+import { useEffect } from "react";
 import { jobPositions } from "./data/careersData";
 
 const positions = [
@@ -52,6 +53,10 @@ const positions = [
 ];
 
 export default function Careers() {
+      // Scroll to the top of the page when the component is rendered
+        useEffect(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, []);
   const navigate = useNavigate();
 
   return (

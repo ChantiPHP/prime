@@ -130,13 +130,13 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-4">
             {[
               { name: "Expertise", path: "/expertise" },
-              { name: "Events", path: "/events" },
-              { name: "Services", path: "/services" },
-              { name: "Careers", path: "/careers" },
-              { name: "Properties", path: "/properties" },
-              { name: "Press Room", path: "/press" },
-              { name: "About", path: "/about" },
+              { name: "Leadership", path: "/about/leadership" },
+              { name: "Find A Property", path: "/PropertiesPage" },
+              { name: "Awards", path: "/about/awards" },
+              { name: "Careers", path: "/Careers" },
               { name: "Contact", path: "/contact" },
+              { name: "Events", path: "/Events" },
+              { name: "Pressroom", path: "/Pressroom" },
             ].map((link) => (
               <Link
                 key={link.name}

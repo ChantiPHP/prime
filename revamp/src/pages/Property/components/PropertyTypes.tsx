@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const PropertyTypes = () => {
   return (
     <div className="w-full flex justify-center py-6 mb-6">
-      <div className="max-w-[1600px] w-full grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+      <div className="max-w-[1600px] w-full grid grid-cols-1 md:grid-cols-3 gap-6 px-4 mt-[50px] sm:mt-[60px] md:mt-[70px] lg:mt-[80px] mb-[50px]">
 
         {/* Office Spaces */}
         <Link

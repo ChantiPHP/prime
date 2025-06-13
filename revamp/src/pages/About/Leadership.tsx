@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navbar from "@/components/layout/Navbar/Navbar";
@@ -55,6 +55,10 @@ const marketingTeam: TeamMember[] = [
 ];
 
 const Team: React.FC = () => {
+        // Scroll to the top of the page when the component is rendered
+          useEffect(() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }, []);
   return (
     <div className="flex-col items-center">
       <Navbar />

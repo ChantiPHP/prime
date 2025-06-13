@@ -14,8 +14,7 @@ import PropertiesPage from "@/pages/Property/PropertiesPage";
 import PropertiesPage2 from "@/pages/Property/PropertiesPage2";
 import ViewProperties from "@/pages/Property/View-Properties";
 import Events  from "@/pages/Event/Events";
-import Pressroom from "@/pages/Pressroom";
-
+import Pressroom from "@/pages/Pressroom/Pressroom";
 
 import React from "react";
 

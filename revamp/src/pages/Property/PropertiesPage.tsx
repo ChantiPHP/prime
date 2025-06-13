@@ -1,15 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/layout/Navbar/Navbar";
 import Footer from "@/components/layout/Footer";
 import { useNavigate } from "react-router-dom";
 import { TopFilter } from "./components/filters"; 
 import { cities } from "./data/propertiesData"; 
 import PropertyTypes from "./components/PropertyTypes";
-import PropertyLocations from "./components/PropertyLocations";
+
 
 export default function FindProperty() {
   // Local state to manage search input and selected city
   // These states will be updated based on user input
+
+   // Scroll to the top of the page when the component is rendered
+          useEffect(() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }, []);
+  
   
   const [searchTerm, setSearchTerm] = useState("");
   // Dropdown for selecting a location (city)
@@ -57,8 +63,6 @@ export default function FindProperty() {
         />
       </div>
       {/* Additional components for property types and locations */}
-      {/* These components will allow users to filter properties by type and location */}
-      <PropertyLocations />
       <PropertyTypes />
       <Footer />
     </div>

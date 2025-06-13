@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PhoneCall, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,6 +7,10 @@ import Footer from "@/components/layout/Footer";
 import { expertiseData, ExpertiseItem } from "./data/expertiseData";
 
 const ExpertisaePage = () => {
+      // Scroll to the top of the page when the component is rendered
+        useEffect(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, []);
   const [selectedExpertisae, setSelectedExpertisae] = useState<number>(1);
 
   const selectedData: ExpertiseItem | undefined = expertiseData.find(

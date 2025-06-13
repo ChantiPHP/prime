@@ -140,14 +140,17 @@ export default function PropertyLocations() {
   }
 
   return (
-    <section className="relative bg-gray-100 py-12 select-none max-w-full overflow-hidden mx-auto mt-[50px] sm:mt-[60px] md:mt-[70px] lg:mt-[80px] mb-[50px]">
+    <section className="relative bg-gray-100 py-12 select-none max-w-full overflow-hidden mx-auto ">
       <div className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12">
-        <h2 className="text-4xl font-bold inline-block">
-          <span className="text-PRIMEblue px-4 py-4 rounded-sm">
-            <span className="text-maintitle">PROPERTY</span>
-            <span className="ml-2 text-maintitle">LOCATIONS</span>
+ <h2 className="text-4xl font-bold inline-block">
+          <span className="text-PRIMEyellow bg-PRIMEblue px-4 py-2 rounded-sm">
+            <span className="text-maintitle">BUSINESS</span>
+            <span className="ml-2 text-maintitle">DISTRICTS</span>
           </span>
         </h2>
+        <p className="text-PRIMEblack mt-6 text-description">
+          Explore major hubs and commercial hotspots with us.
+        </p>
       </div>
 
       {/* Arrows */}

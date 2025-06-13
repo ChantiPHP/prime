@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navbar from "@/components/layout/Navbar/Navbar";
@@ -60,6 +60,11 @@ const awardsData: Record<string, Award[]> = {
 };
 
 const Awards: React.FC = () => {
+        // Scroll to the top of the page when the component is rendered
+        useEffect(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, []);
+        
   const [searchParams] = useSearchParams();
   const yearParam = searchParams.get("year");
 
