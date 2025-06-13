@@ -10,29 +10,29 @@ const PropertyTypes = () => {
         {/* Office Spaces */}
         <Link
           to="/PropertiesPage2?propertyType=Office%20Spaces"
-          className="relative h-72 flex justify-center items-center rounded-2xl bg-[url('/Careers/Careers.jpeg')] bg-cover bg-center text-PRIMEyellow text-xl font-semibold hover:bg-[#0a294d] transition overflow-hidden"
+          className="relative h-72 flex justify-center items-center rounded-2xl bg-[url('/Property/OfficeSpaces/OfficeSpaces.jpg')] bg-cover bg-center text-PRIMEyellow text-xl font-semibold hover:bg-[#0a294d] transition overflow-hidden"
         >
           <div className="absolute inset-0 bg-black/60 z-0" />
           <span className="relative z-10">OFFICE SPACES</span>
         </Link>
 
        {/* Retail */}
-<Link
-  to="/PropertiesPage2?propertyType=Retail%20Spaces,Commercial%20Lots"
-  className="relative h-72 flex justify-center items-center rounded-2xl bg-[url('/Careers/Careers.jpeg')] bg-cover bg-center text-PRIMEyellow text-xl font-semibold hover:bg-[#0a294d] transition overflow-hidden"
->
-  <div className="absolute inset-0 bg-black/60 z-0" />
-  <span className="relative z-10 text-center">RETAIL SPACES & COMMERCIAL LOTS</span>
-</Link>
+        <Link
+          to="/PropertiesPage2?propertyType=Retail%20Spaces,Commercial%20Lots"
+          className="relative h-72 flex justify-center items-center rounded-2xl bg-[url('/Property/Key-Retail-Building-Projects-and-Commercial-Lots/Retail-Commercial.jpg')] bg-cover bg-center text-PRIMEyellow text-xl font-semibold hover:bg-[#0a294d] transition overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-black/60 z-0" />
+          <span className="relative z-10 text-center">RETAIL SPACES & COMMERCIAL LOTS</span>
+        </Link>
 
-{/* Industrial */}
-<Link
-  to="/PropertiesPage2?propertyType=Industrial%20Lots,Industrial%20Warehouse"
-  className="relative h-72 flex justify-center items-center rounded-2xl bg-[url('/Careers/Careers.jpeg')] bg-cover bg-center text-PRIMEyellow text-xl font-semibold hover:bg-[#0a294d] transition overflow-hidden"
->
-  <div className="absolute inset-0 bg-black/60 z-0" />
-  <span className="relative z-10 text-center">INDUSTRIAL LOT & WAREHOUSE</span>
-</Link>
+        {/* Industrial */}
+        <Link
+          to="/PropertiesPage2?propertyType=Industrial%20Lots,Industrial%20Warehouse"
+          className="relative h-72 flex justify-center items-center rounded-2xl bg-[url('/Property/Key-Industrial-Projects-and-Warehouses/IndustrialLot-Warehouse.jpg')] bg-cover bg-center text-PRIMEyellow text-xl font-semibold hover:bg-[#0a294d] transition overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-black/60 z-0" />
+          <span className="relative z-10 text-center">INDUSTRIAL LOT & WAREHOUSE</span>
+        </Link>
 
 
       </div>

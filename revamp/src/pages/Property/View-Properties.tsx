@@ -11,7 +11,6 @@ import {
   Share,
   ChevronLeft,
   ChevronRight,
-  Heart,
   HouseIcon,
 } from "lucide-react";
 
@@ -22,7 +21,7 @@ export default function ViewProperties() {
   const property = properties.find((prop) => prop.id === parseInt(id || "", 10)) as Property;
 
   const [currentImage, setCurrentImage] = useState(0);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [] = useState(false);
 
     // Scroll to the top of the page when the component is rendered
   useEffect(() => {
@@ -69,21 +68,13 @@ export default function ViewProperties() {
           <div className="flex items-center gap-4 flex-wrap justify-center sm:justify-end">
             <span className="flex items-center text-xs bg-PRIMEblue text-PRIMEwhite rounded-full px-3 py-1">
               <HouseIcon className="w-3 h-3 mr-1" />
-              {property.leaseType}
+              {property.type}
             </span>
             <div className="flex items-center gap-2">
               <button className="text-PRIMEgray hover:text-PRIMEblack transition-colors" aria-label="Share property">
                 <Share size={18} />
               </button>
-              <button
-                onClick={() => setIsFavorite(!isFavorite)}
-                className={`transition-colors ${
-                  isFavorite ? "text-red-500" : "text-PRIMEgray hover:text-PRIMEblack"
-                }`}
-                aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
-              >
-                <Heart size={18} fill={isFavorite ? "currentColor" : "none"} />
-              </button>
+
               <span className="text-lg font-semibold text-PRIMEblack">{property.price}</span>
             </div>
           </div>

@@ -4,18 +4,19 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const places = [
-  { name: "Makati CBD", image: "CityPlaceholder.png", alt: "Makati" },
-  { name: "BGC", image: "CityPlaceholder.png", alt: "BGC" },
-  { name: "Ortigas", image: "CityPlaceholder.png", alt: "Ortigas" },
-  { name: "Pasay", image: "CityPlaceholder.png", alt: "Pasay" },
-  { name: "Quezon City", image: "CityPlaceholder.png", alt: "QC" },
-  { name: "Alabang", image: "CityPlaceholder.png", alt: "Alabang" },
-  { name: "Cebu", image: "CityPlaceholder.png", alt: "Cebu" },
-  { name: "Davao", image: "CityPlaceholder.png", alt: "Davao" },
-  { name: "Clark", image: "CityPlaceholder.png", alt: "Clark" },
-  { name: "Iloilo", image: "CityPlaceholder.png", alt: "Iloilo" },
-  { name: "CDO", image: "CityPlaceholder.png", alt: "CDO" },
-  { name: "Bacolod", image: "CityPlaceholder.png", alt: "Bacolod" },
+  { name: "Quezon City", image: "/Property/PropertyCities/QuezonCity.jpg", alt: "Quezon City" },
+  { name: "San Juan City", image: "/Property/PropertyCities/SanJuanCity.jpg", alt: "San Juan" },
+  { name: "Pasig City", image: "/Property/PropertyCities/PasigCity.jpg", alt: "Pasig" },
+  { name: "Makati City", image: "/Property/PropertyCities/MakatiCity.jpg", alt: "Makati" },
+  { name: "Valenzuela City", image: "/Property/PropertyCities/ValenzuelaCity.jpg", alt: "Valenzuela" },
+  { name: "Pasay City", image: "/Property/PropertyCities/PasayCity.jpg", alt: "Pasay" },
+  { name: "Marikina City", image: "/Property/PropertyCities/MarikinaCity.jpg", alt: "Marikina" },
+  { name: "Caloocan City", image: "/Property/PropertyCities/CaloocanCity.jpg", alt: "Caloocan" },
+  { name: "Paranaque City", image: "/Property/PropertyCities/ParanaqueCity.jpg", alt: "Paranaque" },
+  { name: "Navotas City", image: "/Property/PropertyCities/NavotasCity.jpg", alt: "Navotas" },
+  { name: "Las Pinas City", image: "/Property/PropertyCities/LasPinasCity.jpg", alt: "LasPinas" },
+  { name: "Taguig City", image: "/Property/PropertyCities/TaguigCity.jpg", alt: "Taguig" },
+  { name: "Mandaluyong City", image: "/Property/PropertyCities/MandaluyongCity.jpg", alt: "Mandaluyong" },
 ];
 
 const BASE_WIDTH = 500;
@@ -114,7 +115,7 @@ export default function PropertyLocations() {
     if (Math.abs(dragCurrX.current - dragStartX.current) > clickThreshold) return;
 
     if (expanded === idx) {
-      // ✅ Navigate to PropertiesPage2 with query param
+      // Navigate to PropertiesPage2 with query param
       navigate(`/PropertiesPage2?location=${encodeURIComponent(places[idx].name)}`);
     } else {
       setExpanded(idx);
@@ -142,7 +143,7 @@ export default function PropertyLocations() {
     <section className="relative bg-gray-100 py-12 select-none max-w-full overflow-hidden mx-auto mt-[50px] sm:mt-[60px] md:mt-[70px] lg:mt-[80px] mb-[50px]">
       <div className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12">
         <h2 className="text-4xl font-bold inline-block">
-          <span className="text-PRIMEyellow bg-PRIMEblue px-4 py-4 rounded-sm">
+          <span className="text-PRIMEblue px-4 py-4 rounded-sm">
             <span className="text-maintitle">PROPERTY</span>
             <span className="ml-2 text-maintitle">LOCATIONS</span>
           </span>
@@ -151,12 +152,12 @@ export default function PropertyLocations() {
 
       {/* Arrows */}
       <div className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10 md:z-30">
-        <Button size="icon" onClick={prev} className="rounded-full bg-PRIMEwhite shadow-lg border border-PRIMEgray text-PRIMEblue hover:bg-PRIMEblue hover:text-PRIMEwhite h-10 w-10">
+        <Button size="icon" onClick={prev} className="rounded-full bg-PRIMEwhite shadow-lg border border-PRIMEgray text-PRIMEblue hover:bg-PRIMEblue hover:text-PRIMEwhite active:bg-PRIMEgray active:text-PRIMEwhite transition-all h-10 w-10">
           <ChevronLeft className="h-5 w-5" />
         </Button>
       </div>
       <div className="absolute top-1/2 right-4 transform -translate-y-1/2 z-10 md:z-30">
-        <Button size="icon" onClick={next} className="rounded-full bg-PRIMEwhite shadow-lg border border-PRIMEgray text-PRIMEblue hover:bg-PRIMEblue hover:text-PRIMEwhite h-10 w-10">
+        <Button size="icon" onClick={next} className="rounded-full bg-PRIMEwhite shadow-lg border border-PRIMEgray text-PRIMEblue hover:bg-PRIMEblue hover:text-PRIMEwhite active:bg-PRIMEgray active:text-PRIMEwhite transition-all h-10 w-10">
           <ChevronRight className="h-5 w-5" />
         </Button>
       </div>
@@ -182,6 +183,7 @@ export default function PropertyLocations() {
             transition: dragging.current ? "none" : "transform 0.4s ease-out",
           }}
         >
+          
           {[...places, ...places].map((place, i) => {
             const idx = i % TOTAL_CARDS;
             const isExp = expanded === idx;

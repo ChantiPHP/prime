@@ -23,7 +23,12 @@ export const Events: React.FC = () => {
     seconds: 0,
   });
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-
+  
+    // Scroll to the top of the page when the component is rendered
+    useEffect(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, []);
+    
   // Whenever currentIndex changes, recalculate the countdown
   useEffect(() => {
     const calculateTime = () => {

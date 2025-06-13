@@ -10,6 +10,7 @@ import PropertyLocations from "./components/PropertyLocations";
 export default function FindProperty() {
   // Local state to manage search input and selected city
   // These states will be updated based on user input
+  
   const [searchTerm, setSearchTerm] = useState("");
   // Dropdown for selecting a location (city)
   // This will be used to filter properties based on the selected city
@@ -26,7 +27,7 @@ export default function FindProperty() {
 
     // Append query parameters only if values are not empty
     // This ensures that we only include parameters that the user has specified
-    if (searchTerm.trim()) params.append("search", searchTerm.trim());    
+    if (searchTerm.trim()) params.append("search", searchTerm.trim());
     if (locationDropdown) params.append("location", locationDropdown);
 
     // Redirect to ViewProperties3 page with query parameters
@@ -35,16 +36,16 @@ export default function FindProperty() {
   };
 
   return (
-    <div className="w-full h-52 sm:h-56 md:h-74 lg:h-82 xl:h-90 relative overflow-visible">
+    <div className="w-full h-36 sm:h-40 md:h-48 lg:h-56 xl:h-64 relative overflow-visible">
       <Navbar />
       {/* Background banner image */}
       <img
-        src="FindPropertyBanner.jpg"
+        src="HomeBanner.jpg"
         alt="Modern glass buildings with gradient overlay"
-        className="w-full h-full object-contain"
+        className="w-full h-full object-cover"
       />
       {/* Overlay container with semi-transparent black background */}
-      <div className="absolute inset-0 flex items-center justify-center bg-PRIMEblue/70">
+      <div className="absolute inset-0 flex items-center justify-center bg-black/30">
         {/* Filter component with search input and dropdown */}
         <TopFilter
           searchTerm={searchTerm}
@@ -57,12 +58,13 @@ export default function FindProperty() {
       </div>
       {/* Additional components for property types and locations */}
       {/* These components will allow users to filter properties by type and location */}
-      <div className="mt-20 sm:mt-24">
       <PropertyLocations />
-      </div>
       <PropertyTypes />
       <Footer />
     </div>
   );
 }
+
+
+
 

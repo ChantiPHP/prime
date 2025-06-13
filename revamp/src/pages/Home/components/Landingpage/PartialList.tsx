@@ -57,7 +57,7 @@ const PartialList = () => {
                 src={logo.src}
                 alt={logo.alt}
                 title={logo.title}
-                className="h-18 w-full object-contain"
+                className="h-auto w-auto object-cover p-2 "
               />
             </div>
           ))}

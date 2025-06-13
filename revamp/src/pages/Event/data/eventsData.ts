@@ -10,7 +10,7 @@
       about:
         "Join top real estate professionals, investors, and tech leaders to explore the future of property innovation. Discover trends, strategies, and digital tools shaping the Philippine real estate landscape.",
       speaker: {
-        name: "Speaker Name",
+        name: "Marck Joseph Gonzales",
         title: "Lead Software Engineer & Tech Community Host",
         image:
           "PhotoPlaceholder.png",

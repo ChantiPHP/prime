@@ -7,7 +7,6 @@ import EventBanner from "./components/Landingpage/EventBanner";
 import PropertiesSection from "./components/Landingpage/PropertiesSection";
 import TrustedPartners from "./components/Landingpage/TrustedPartners";
 import PartialList from "./components/Landingpage/PartialList";
-import BusinessDistrict from "./components/Landingpage/BusinessDistrict";
 import BottomBanner from "./components/Landingpage/BottomBanner";
 
 function Home() {
@@ -21,7 +20,6 @@ function Home() {
       <PropertiesSection />
       <TrustedPartners />
       <PartialList />
-      <BusinessDistrict />
       <BottomBanner />
       <Footer />
     </div>
