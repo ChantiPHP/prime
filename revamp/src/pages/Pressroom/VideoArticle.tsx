@@ -64,7 +64,7 @@ export default function VideoArticle() {
 
         {/* Right Related Links with Vertical Line */}
         <aside className="md:w-1/3 border-l border-gray-300 md:pl-8 mt-12 md:mt-0 space-y-6">
-          <h3 className="text-xl font-semibold">Related Videos</h3>
+          <h3 className="text-xl font-semibold">Other Videos</h3>
 
           {/* Related Video 1 */}
           <div className="border border-gray-200 rounded-xl p-4 shadow-sm bg-white hover:shadow-md transition">

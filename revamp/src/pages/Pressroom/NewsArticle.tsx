@@ -94,7 +94,7 @@ export default function NewsArticle() {
 
         {/* Right Related Links with Vertical Divider */}
         <aside className="md:w-1/3 border-l border-gray-300 md:pl-8 mt-12 md:mt-0 space-y-6">
-          <h3 className="text-xl font-semibold">Related Articles</h3>
+          <h3 className="text-xl font-semibold">Other Articles</h3>
 
           {/* Related Article 1 */}
           <div className="border border-gray-200 rounded-xl p-4 bg-white shadow-sm hover:shadow-md transition">
