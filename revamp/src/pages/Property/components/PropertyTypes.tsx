@@ -33,8 +33,6 @@ const PropertyTypes = () => {
           <div className="absolute inset-0 bg-black/60 z-0" />
           <span className="relative z-10 text-center">INDUSTRIAL LOT & WAREHOUSE</span>
         </Link>
-
-
       </div>
     </div>
   );
