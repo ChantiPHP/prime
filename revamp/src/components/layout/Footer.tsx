@@ -134,8 +134,8 @@ export default function Footer() {
               { name: "Find A Property", path: "/PropertiesPage" },
               { name: "Awards", path: "/about/awards" },
               { name: "Careers", path: "/Careers" },
-              { name: "Contact", path: "/contact" },
               { name: "Events", path: "/Events" },
+              { name: "Contact", path: "/contact" },
               { name: "Pressroom", path: "/Pressroom" },
             ].map((link) => (
               <Link

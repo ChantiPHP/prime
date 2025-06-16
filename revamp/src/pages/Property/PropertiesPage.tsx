@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { TopFilter } from "./components/filters"; 
 import { cities } from "./data/propertiesData"; 
 import PropertyTypes from "./components/PropertyTypes";
+import PropertyLocations from "./components/PropertyLocations";
 
 
 export default function FindProperty() {
@@ -62,6 +63,7 @@ export default function FindProperty() {
           onSearch={handleSearch}
         />
       </div>
+      <PropertyLocations />
       {/* Additional components for property types and locations */}
       <PropertyTypes />
       <Footer />

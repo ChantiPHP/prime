@@ -1,10 +1,9 @@
 import { useEffect } from "react";
-import { useSearchParams, Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useSearchParams } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar/Navbar";
 import Footer from "@/components/layout/Footer";
 import Featured from "./Featured";
-import awardsbg from "@/assets/awardsbg.png";
+
 
 interface Award {
   img: string;
@@ -77,44 +76,6 @@ const Awards: React.FC = () => {
   return (
     <div className=" bg-gray-100 min-h-screen">
       <Navbar /> {/* Navbar added here */}
-      {/* Header Section */}
-      <section className="relative">
-        <div
-          className="w-full h-[500px] rounded-lg overflow-hidden relative group"
-          style={{
-            backgroundImage: `url(${awardsbg})`, // Background image for the banner
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-PRIMEblue opacity-50"></div>{" "}
-          {/* Updated to match Careers color */}
-          {/* Centered Title and Breadcrumb with animation */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4"
-          >
-            <h1 className="text-[36pt] sm:text-[48pt] font-bold">
-              AWARDS & RECOGNITION
-            </h1>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="inline-flex items-center px-[40px] py-[12px] border-2 border-white rounded-full text-lg font-semibold mt-4"
-            >
-              <Link to="/" className="hover:underline">
-                Home
-              </Link>
-              <span className="mx-2">/</span>
-              <span className="font-semibold">Awards</span>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
       {/* Featured Awards Section */}
       <Featured />
       {/* 🗓 Awards by Year */}

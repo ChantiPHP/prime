@@ -8,7 +8,6 @@ import PropertiesSection from "./components/Landingpage/PropertiesSection";
 import TrustedPartners from "./components/Landingpage/TrustedPartners";
 import PartialList from "./components/Landingpage/PartialList";
 import BottomBanner from "./components/Landingpage/BottomBanner";
-import PropertyLocations from "../Property/components/PropertyLocations";
 
 function Home() {
   return (
@@ -21,7 +20,6 @@ function Home() {
       <PropertiesSection />
       <TrustedPartners />
       <PartialList />
-      <PropertyLocations />
       <BottomBanner />
       <Footer />
     </div>

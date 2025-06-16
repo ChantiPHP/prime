@@ -62,7 +62,7 @@ export default function Featured() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-white px-4 sm:px-8 md:px-10 lg:px-20 font-gotham-book"
+      className="relative w-full mt-[56px] bg-white px-4 sm:px-8 md:px-10 lg:px-20 font-gotham-book"
     >
       <div className="max-w-[1400px] mx-auto rounded-3xl p-8 md:p-12">
         {/* Heading */}
