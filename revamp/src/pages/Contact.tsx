@@ -48,39 +48,42 @@ export default function Contact() {
       <Navbar />
       <main className="w-full mx-auto mb-10">
         {/* Banner Section */}
-        <section className="relative mb-10">
-          <div
-            className="w-full h-[500px] rounded-lg overflow-hidden relative group"
-            style={{
-              backgroundImage: `url(/HomeBanner.jpg)`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div className="absolute inset-0 bg-PRIMEblue opacity-50"></div>
+      <section className="relative mb-10">
+  <div
+    className="w-full h-[320px] md:h-[360px] rounded-lg overflow-hidden relative flex items-center justify-center"
+    style={{
+      backgroundImage: `url(/HomeBanner.jpg)`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}
+  >
+    {/* Overlay */}
+    <div className="absolute inset-0 bg-PRIMEblue opacity-50"></div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="absolute inset-0 flex flex-col items-center justify-center text-PRIMEwhite text-center px-4"
-            >
-              <h1 className="text-[48pt] font-bold uppercase">Contact Us</h1>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className="inline-flex items-center px-[40px] py-[12px] border-2 border-PRIMEwhite rounded-full text-lg font-semibold mt-4"
-              >
-                <Link to="/" className="hover:underline">
-                  Home
-                </Link>
-                <span className="mx-2">/</span>
-                <span className="font-semibold">Contact</span>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
+    {/* Content */}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="relative z-10 flex flex-col items-center justify-center text-center text-PRIMEwhite px-4"
+    >
+      <h1 className="text-3xl md:text-5xl mt-6 sm:mt-8 md:mt-12 lg:mt-14 font-bold uppercase">Contact Us</h1>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="inline-flex items-center px-6 py-2 border-2 border-PRIMEwhite rounded-full text-base md:text-lg font-semibold mt-4"
+      >
+        <Link to="/" className="hover:underline">
+          Home
+        </Link>
+        <span className="mx-2">/</span>
+        <span className="font-semibold">Contact</span>
+      </motion.div>
+    </motion.div>
+  </div>
+</section>
+
 
         {/* Contact Cards */}
         <section className="mb-14 max-w-[1400px] mx-auto">

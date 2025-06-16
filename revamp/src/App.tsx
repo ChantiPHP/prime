@@ -1,37 +1,40 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import React from "react";
 
 import Home from "@/pages/Home/Home";
 import Expertise from "@/pages/Expertise/Expertise";
 import Services from "@/pages/Services";
 import Contact from "@/pages/Contact";
 import Careers from "@/pages/Career/Careers";
-import CareerDetails from "@/pages/Career/CareerDetails"; 
+import CareerDetails from "@/pages/Career/CareerDetails";
 import Awards from "@/pages/About/Awards";
 import Leadership from "@/pages/About/Leadership";
 import Leadership2 from "@/pages/About/Leadership/Leadership2";
 import PropertiesPage from "@/pages/Property/PropertiesPage";
 import PropertiesPage2 from "@/pages/Property/PropertiesPage2";
 import ViewProperties from "@/pages/Property/View-Properties";
-import Events  from "@/pages/Event/Events";
+import Events from "@/pages/Event/Events";
 import Pressroom from "@/pages/Pressroom/Pressroom";
+import Insights from "@/pages/Pressroom/Insights";
+import News from "@/pages/Pressroom/News";
 
-import React from "react";
-
-// Page animation wrapper with Fade Only — Minimalistic
-const PageTransition: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.4, ease: "easeInOut" }}
-      style={{ height: "100%" }}
-    >
-      {children}
-    </motion.div>
-  );
-};
+const PageTransition: React.FC<React.PropsWithChildren<{}>> = ({ children }) => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.4, ease: "easeInOut" }}
+    style={{ height: "100%" }}
+  >
+    {children}
+  </motion.div>
+);
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -53,6 +56,8 @@ function AnimatedRoutes() {
         <Route path="/PropertiesPage2" element={<PageTransition><PropertiesPage2 /></PageTransition>} />
         <Route path="/events" element={<PageTransition><Events /></PageTransition>} />
         <Route path="/pressroom" element={<PageTransition><Pressroom /></PageTransition>} />
+        <Route path="/pressroom/insights/:id" element={<PageTransition><Insights /></PageTransition>} />
+        <Route path="/pressroom/news/:id" element={<PageTransition><News key={location.pathname} /></PageTransition>} />
       </Routes>
     </AnimatePresence>
   );

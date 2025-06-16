@@ -11,7 +11,7 @@ const menuItems = [
   {
     label: "About Us",
     subItems: [
-      { label: "PRIME Leadership", to: "/about/leadership" },
+      { label: "PRIME Leadership", to: "/about/leadership2" },
       { label: "Awards and Recognition", to: "/about/awards" },
       { label: "Events", to: "/events" },
       { label: "Pressroom", to: "/pressroom" },

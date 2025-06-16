@@ -75,43 +75,49 @@ const PropertyList: React.FC<PropertyListProps> = ({
         )}
       </div>
 
-      {totalPages > 1 && (
-        <nav
-          aria-label="Pagination"
-          className="mt-6 flex items-center justify-center gap-3 text-PRIMEblue text-subcontent font-semibold"
-        >
-          <button
-            aria-label="Previous page"
-            onClick={() => goToPage(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="border border-PRIMElightgray rounded px-3 py-1 hover:border-PRIMEblue disabled:opacity-40"
-          >
-            <FaChevronLeft />
-          </button>
+{totalPages > 1 && (
+  <nav
+    aria-label="Pagination"
+    className="mt-6 flex justify-end items-center gap-2 text-PRIMEblue text-sm font-semibold"
+  >
+    {/* Previous Button */}
+    <button
+      aria-label="Previous page"
+      onClick={() => goToPage(currentPage - 1)}
+      disabled={currentPage === 1}
+      className="w-9 h-9 flex items-center justify-center border border-PRIMElightgray rounded hover:border-PRIMEblue disabled:opacity-40"
+    >
+      <FaChevronLeft />
+    </button>
 
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i + 1}
-              aria-label={`Page ${i + 1}`}
-              onClick={() => goToPage(i + 1)}
-              className={`border border-PRIMElightgray rounded px-3 py-1 hover:border-PRIMEblue hover:text-PRIMEblue ${
-                currentPage === i + 1 ? "bg-PRIMEblue text-PRIMEwhite hover:text-PRIMEwhite" : ""
-              }`}
-            >
-              {i + 1}
-            </button>
-          ))}
+    {/* Page Numbers */}
+    {Array.from({ length: totalPages }, (_, i) => (
+      <button
+        key={i + 1}
+        aria-label={`Page ${i + 1}`}
+        onClick={() => goToPage(i + 1)}
+        className={`w-9 h-9 flex items-center justify-center border border-PRIMElightgray rounded transition hover:border-PRIMEblue hover:text-PRIMEblue ${
+          currentPage === i + 1
+            ? "bg-PRIMEblue text-PRIMEwhite hover:text-PRIMEwhite"
+            : ""
+        }`}
+      >
+        {i + 1}
+      </button>
+    ))}
 
-          <button
-            aria-label="Next page"
-            onClick={() => goToPage(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="border border-PRIMElightgray rounded px-3 py-1 hover:border-PRIMEblue disabled:opacity-40"
-          >
-            <FaChevronRight />
-          </button>
-        </nav>
-      )}
+    {/* Next Button */}
+    <button
+      aria-label="Next page"
+      onClick={() => goToPage(currentPage + 1)}
+      disabled={currentPage === totalPages}
+      className="w-9 h-9 flex items-center justify-center border border-PRIMElightgray rounded hover:border-PRIMEblue disabled:opacity-40"
+    >
+      <FaChevronRight />
+    </button>
+  </nav>
+)}
+
     </section>
   );
 };
