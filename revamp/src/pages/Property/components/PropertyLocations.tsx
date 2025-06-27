@@ -152,12 +152,12 @@ export default function PropertyLocations() {
       </div>
 
       {/* Arrows */}
-      <div className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10 md:z-30">
+      <div className="absolute top-1/2 left-4 transform -translate-y-1/2 z-50 md:z-30 mt-18">
         <Button size="icon" onClick={prev} className="rounded-full bg-PRIMEwhite shadow-lg border border-PRIMEgray text-PRIMEblue hover:bg-PRIMEblue hover:text-PRIMEwhite active:bg-PRIMEgray active:text-PRIMEwhite transition-all h-10 w-10">
           <ChevronLeft className="h-5 w-5" />
         </Button>
       </div>
-      <div className="absolute top-1/2 right-4 transform -translate-y-1/2 z-10 md:z-30">
+      <div className="absolute top-1/2 right-4 transform -translate-y-1/2 z-50 md:z-30 mt-18">
         <Button size="icon" onClick={next} className="rounded-full bg-PRIMEwhite shadow-lg border border-PRIMEgray text-PRIMEblue hover:bg-PRIMEblue hover:text-PRIMEwhite active:bg-PRIMEgray active:text-PRIMEwhite transition-all h-10 w-10">
           <ChevronRight className="h-5 w-5" />
         </Button>

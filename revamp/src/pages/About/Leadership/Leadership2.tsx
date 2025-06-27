@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 // Components
 import Navbar from "@/components/layout/Navbar/Navbar";
 import Footer from "@/components/layout/Footer";
-import JetYuProfile from "./Founder"; // Adjust the path if needed
+import Founder from "./Founder"; // Adjust the path if needed
 
 const Leadership: React.FC = () => {
   return (
@@ -38,7 +38,7 @@ const Leadership: React.FC = () => {
         </div>
       </section>
     
-        <JetYuProfile />
+        <Founder />
    
 
       <div className="w-full">
